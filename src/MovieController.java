@@ -19,8 +19,8 @@ public class MovieController {
             switch (userResponse) {
                 case 1 -> {
                     System.out.println("Enter Title:");
-                    String userTitle = scan.nextLine();
                     scan.nextLine();
+                    String userTitle = scan.nextLine();
 
                     System.out.println("Enter a director");
                     String userDirector = scan.nextLine();
@@ -28,25 +28,29 @@ public class MovieController {
                     System.out.println("Enter the year the movie was made: ");
                     int movieYear = scan.nextInt();
 
-                    System.out.println("Is the movie colored? - answer true or false");
-                    boolean userColor = scan.nextBoolean();
+                    String userColor = "";
+                    System.out.println("Is the movie colored?");
+                    String userColorString = scan.nextLine();
+                    userColorString = scan.nextLine();
+                    if (userColorString.equalsIgnoreCase("yes")){
+                        userColor += "Yes";
+                    } else if (userColorString.equalsIgnoreCase("no")){
+                        userColor += "No";
+                    }
 
-                    System.out.println("Enter how long the movies is");
+                    System.out.println("Enter how long the movie is");
                     int movieLength = scan.nextInt();
-
 
                     System.out.println("Enter the movie's genre: ");
                     String movieGenre = scan.nextLine();
+                    movieGenre = scan.nextLine();
 
 
                     Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
-                    System.out.println(userMovie);
 
                     movieCollection.addMovie(userMovie);
 
                     System.out.println(movieCollection);
-
-                    j
                 }
                 case 2 -> running = false;
             }

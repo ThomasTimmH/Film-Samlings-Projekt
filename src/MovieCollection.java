@@ -8,8 +8,9 @@ public class MovieCollection {
         MovieList.add(movie);
     }
 
-
     public String toString(){
         return MovieList.toString();
     }
+
+
 }

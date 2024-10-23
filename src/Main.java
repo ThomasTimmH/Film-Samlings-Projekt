@@ -5,7 +5,5 @@ public class Main {
 
         MovieController moviecontroller = new MovieController();
 
-
-
     }
 }
