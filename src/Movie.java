@@ -15,9 +15,6 @@ public class Movie {
         this.genre = genre;
     }
 
-
-
-
     public String getTitle(){
         return title;
     }
