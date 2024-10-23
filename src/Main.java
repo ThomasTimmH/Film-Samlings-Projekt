@@ -9,10 +9,22 @@ public class Main {
 
         System.out.println(move);
 
-        System.out.println("Enter Title:");
-        String userTitle = scan.nextLine();
+        String userTitle;
 
-        System.out.println("Enter movie length in minutes: ");
-        int userMovieMinutes = scan.nextInt();
+        System.out.println("Enter Title: ");
+        userTitle = scan.nextLine();
+        System.out.println(userTitle);
+
+        int movieYear;
+
+        System.out.println("Enter the year the movie was made: ");
+        movieYear = scan.nextInt();
+        System.out.println(movieYear);
+
+        String movieGenre;
+
+        System.out.println("Enter the movie's genre: ");
+        movieGenre = scan.nextLine();
+        System.out.println(movieGenre);
     }
 }
