@@ -15,6 +15,11 @@ public class Main {
         System.out.println("Enter a director");
         String userDirector = scan.nextLine();
 
+        System.out.println("Enter the year the movie was made: ");
+        int movieYear = scan.nextInt();
+
+        System.out.println("Enter the movie's genre: ");
+        String movieGenre = scan.nextLine();
 
     }
 }
