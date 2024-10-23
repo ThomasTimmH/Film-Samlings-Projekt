@@ -9,8 +9,6 @@ public class Main {
 
         System.out.println(move);
 
-
-
         System.out.println("Enter Title:");
         String userTitle = scan.nextLine();
 
