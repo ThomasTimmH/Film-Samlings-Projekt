@@ -18,6 +18,10 @@ public class Main {
         System.out.println("Enter the year the movie was made: ");
         int movieYear = scan.nextInt();
 
+
+        System.out.println("Enter how long the movies is");
+        int movieLength = scan.nextInt();
+
         System.out.println("Enter the movie's genre: ");
         String movieGenre = scan.nextLine();
 
