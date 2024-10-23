@@ -12,7 +12,6 @@ public class Main {
         System.out.println("Enter Title:");
         String userTitle = scan.nextLine();
 
-
         System.out.println("Enter a director");
         String userDirector = scan.nextLine();
 
@@ -25,8 +24,17 @@ public class Main {
         System.out.println("Enter how long the movies is");
         int movieLength = scan.nextInt();
 
+
         System.out.println("Enter the movie's genre: ");
         String movieGenre = scan.nextLine();
+
+
+        Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
+        System.out.println(userMovie);
+
+        movieCollection.addMovie(userMovie);
+
+        System.out.println(movieCollection);
 
     }
 }
