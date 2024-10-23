@@ -9,11 +9,8 @@ public class Main {
 
         System.out.println(move);
 
-
-
         System.out.println("Enter Title:");
         String userTitle = scan.nextLine();
-
 
         System.out.println("Enter a director");
         String userDirector = scan.nextLine();
