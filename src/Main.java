@@ -9,10 +9,12 @@ public class Main {
 
         System.out.println(move);
 
-        String userTitle = null;
-
         System.out.println("Enter Title:");
-        userTitle = scan.nextLine();
-        System.out.println(userTitle);
+        String userTitle = scan.nextLine();
+
+        System.out.println("Enter a director");
+        String userDirector = scan.nextLine();
+
+
     }
 }
