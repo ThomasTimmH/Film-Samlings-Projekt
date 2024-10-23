@@ -15,4 +15,30 @@ public class Movie {
         this.genre = genre;
     }
 
+
+
+
+    public String getTitle(){
+        return title;
+    }
+
+    public String getDirector(){
+        return director;
+    }
+
+    public int getYearCreated(){
+        return yearCreated;
+    }
+
+    public boolean isInColor(){
+        return isInColor;
+    }
+
+    public int getLengthInMinutes(){
+        return lengthInMinutes;
+    }
+
+    public String getGenre(){
+        return genre;
+    }
 }
