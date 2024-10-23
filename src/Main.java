@@ -14,9 +14,6 @@ public class Main {
         System.out.println("Enter Title:");
         String userTitle = scan.nextLine();
 
-        System.out.println("Is the movie colored? - answer true or false");
-        boolean userColor = scan.nextBoolean();
-
 
         System.out.println("Enter a director");
         String userDirector = scan.nextLine();
@@ -24,6 +21,8 @@ public class Main {
         System.out.println("Enter the year the movie was made: ");
         int movieYear = scan.nextInt();
 
+        System.out.println("Is the movie colored? - answer true or false");
+        boolean userColor = scan.nextBoolean();
 
         System.out.println("Enter how long the movies is");
         int movieLength = scan.nextInt();
