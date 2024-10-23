@@ -5,7 +5,4 @@ public class Movie {
     private boolean isInColor;
     private int lengthInMinutes;
     private String genre;
-
-
-
 }
