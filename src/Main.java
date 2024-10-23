@@ -9,22 +9,23 @@ public class Main {
 
         System.out.println(move);
 
-        String userTitle;
 
-        System.out.println("Enter Title: ");
-        userTitle = scan.nextLine();
-        System.out.println(userTitle);
 
-        int movieYear;
+        System.out.println("Enter Title:");
+        String userTitle = scan.nextLine();
+
+        System.out.println("Is the movie colored? - answer true or false");
+        boolean userColor = scan.nextBoolean();
+
+
+        System.out.println("Enter a director");
+        String userDirector = scan.nextLine();
 
         System.out.println("Enter the year the movie was made: ");
-        movieYear = scan.nextInt();
-        System.out.println(movieYear);
-
-        String movieGenre;
+        int movieYear = scan.nextInt();
 
         System.out.println("Enter the movie's genre: ");
-        movieGenre = scan.nextLine();
-        System.out.println(movieGenre);
+        String movieGenre = scan.nextLine();
+
     }
 }
