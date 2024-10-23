@@ -19,8 +19,8 @@ public class MovieController {
             switch (userResponse) {
                 case 1 -> {
                     System.out.println("Enter Title:");
-                    scan.nextLine();
                     String userTitle = scan.nextLine();
+                    scan.nextLine();
 
                     System.out.println("Enter a director");
                     String userDirector = scan.nextLine();
@@ -38,19 +38,21 @@ public class MovieController {
                         userColor += "No";
                     }
 
-                    System.out.println("Enter how long the movie is");
+                    System.out.println("Enter how long the movies is");
                     int movieLength = scan.nextInt();
+
 
                     System.out.println("Enter the movie's genre: ");
                     String movieGenre = scan.nextLine();
-                    movieGenre = scan.nextLine();
 
 
                     Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
+                    System.out.println(userMovie);
 
                     movieCollection.addMovie(userMovie);
 
                     System.out.println(movieCollection);
+
                 }
                 case 2 -> running = false;
             }
