@@ -19,8 +19,8 @@ public class MovieController {
             switch (userResponse) {
                 case 1 -> {
                     System.out.println("Enter Title:");
-                    String userTitle = scan.nextLine();
                     scan.nextLine();
+                    String userTitle = scan.nextLine();
 
                     System.out.println("Enter a director");
                     String userDirector = scan.nextLine();
@@ -28,24 +28,30 @@ public class MovieController {
                     System.out.println("Enter the year the movie was made: ");
                     int movieYear = scan.nextInt();
 
-                    System.out.println("Is the movie colored? - answer true or false");
-                    boolean userColor = scan.nextBoolean();
+                    System.out.println("Is the movie colored?");
+                    scan.nextLine();
+                    String userColor = scan.nextLine();
+                    /*
+                    if (userColor.equalsIgnoreCase("yes"){
+                        userColor = "yes";
+                    } else if(userColor.equalsIgnoreCase())
+
+                     */
 
                     System.out.println("Enter how long the movies is");
                     int movieLength = scan.nextInt();
 
 
                     System.out.println("Enter the movie's genre: ");
+                    scan.nextLine();
                     String movieGenre = scan.nextLine();
 
 
                     Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
-                    System.out.println(userMovie);
 
                     movieCollection.addMovie(userMovie);
 
                     System.out.println(movieCollection);
-
                 }
                 case 2 -> running = false;
             }
