@@ -46,7 +46,6 @@ public class MovieController {
 
                     System.out.println(movieCollection);
 
-                    j
                 }
                 case 2 -> running = false;
             }
