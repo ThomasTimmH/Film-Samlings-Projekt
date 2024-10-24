@@ -47,7 +47,8 @@ public class MovieController {
                     movieCollection.addMovie(userMovie);
                 }
                 case 2 -> System.out.println(movieCollection);
-                case 3 -> running = false;
+                case 3 -> System.out.println("Search");
+                case 4 -> running = false;
             }
         }
     }
