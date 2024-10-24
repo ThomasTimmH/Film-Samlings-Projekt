@@ -16,7 +16,8 @@ public class MovieController {
         while (running) {
             System.out.println("1. Create movie entry");
             System.out.println("2. See movie list");
-            System.out.println("3. Exit");
+            System.out.println("3. Search movie, by title");
+            System.out.println("4. Exit");
             int userResponse = scan.nextInt();
             switch (userResponse) {
                 case 1 -> {
@@ -48,7 +49,13 @@ public class MovieController {
                     movieCollection.addMovie(userMovie);
                 }
                 case 2 -> System.out.println(movieCollection);
-                case 3 -> running = false;
+                case 3 -> {
+                    System.out.println("Please write the title of the movies you are looking for");
+                    scan.nextLine();
+                    String titleSearch = scan.nextLine();
+                    movieCollection.searchMovie(titleSearch);
+                }
+                case 4 -> running = false;
             }
         }
     }
