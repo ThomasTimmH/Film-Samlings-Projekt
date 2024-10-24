@@ -17,15 +17,14 @@ public class MovieController {
         movieCollection.addMovie(testMovie2);
         movieCollection.addMovie(testMovie3);
 
-        System.out.println("Welcome to your movie collection!");
+        UI ui = new UI();
+
+        ui.welcomeMsg();
 
         boolean running = true;
 
         while (running) {
-            System.out.println("1. Create movie entry");
-            System.out.println("2. See movie list");
-            System.out.println("3. Search movie, by title");
-            System.out.println("4. Exit");
+            ui.introduktion();
             int userResponse = scan.nextInt();
             switch (userResponse) {
                 case 1 -> {
