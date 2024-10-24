@@ -22,6 +22,13 @@ public class MovieCollection {
 
             }
         }
-
     }
+
+    public void displayMovies(){
+        for(Movie movie : MovieList){
+            System.out.println(movie.toString());
+        }
+    }
+
+
 }
