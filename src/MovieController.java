@@ -14,7 +14,9 @@ public class MovieController {
 
         while (running) {
             System.out.println("1. Create movie entry");
-            System.out.println("2. Exit");
+            System.out.println("2. See movie list");
+            System.out.println("3. Search movie, by title");
+            System.out.println("4. Exit");
             int userResponse = scan.nextInt();
             switch (userResponse) {
                 case 1 -> {
@@ -31,12 +33,6 @@ public class MovieController {
                     System.out.println("Is the movie colored?");
                     scan.nextLine();
                     String userColor = scan.nextLine();
-                    /*
-                    if (userColor.equalsIgnoreCase("yes"){
-                        userColor = "yes";
-                    } else if(userColor.equalsIgnoreCase())
-
-                     */
 
                     System.out.println("Enter how long the movies is");
                     int movieLength = scan.nextInt();
@@ -50,10 +46,15 @@ public class MovieController {
                     Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
 
                     movieCollection.addMovie(userMovie);
-
-                    System.out.println(movieCollection);
                 }
-                case 2 -> running = false;
+                case 2 -> System.out.println(movieCollection);
+                case 3 -> {
+                    System.out.println("Please write the title of the movies you are looking for");
+                    scan.nextLine();
+                    String titleSearch = scan.nextLine();
+                    movieCollection.searchMovie(titleSearch);
+                }
+                case 4 -> running = false;
             }
         }
     }
