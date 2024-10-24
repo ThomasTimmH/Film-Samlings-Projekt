@@ -1,24 +1,20 @@
 import java.util.Scanner;
 
-
 public class UI {
+
     Scanner scan = new Scanner(System.in);
     MovieController controller = new MovieController();
 
-    public void welcomeMsg(){
-        System.out.println("Welcome to your movie collection!");
-    }
-
-
-    public void introduktion(){
-        System.out.println("1. Create movie entry");
-        System.out.println("2. See movie list");
-        System.out.println("3. Search movie, by title");
-        System.out.println("4. Exit");
-    }
 
         public void UIDisplay() {
 
+
+            System.out.println("Welcome to your movie collection!");
+            System.out.println();
+            System.out.println("1. Create movie entry");
+            System.out.println("2. See movie list");
+            System.out.println("3. Search movie, by title");
+            System.out.println("4. Exit");
 
             Movie testMovie = new Movie("Food", "Timm", 1993, "yes", 180, "Drama");
             Movie testMovie1 = new Movie("Penis", "Timm", 1992, "yes", 180, "Drama");
@@ -30,14 +26,8 @@ public class UI {
             controller.addMovie1(testMovie2);
             controller.addMovie1(testMovie3);
 
-            UI ui = new UI();
-
-            ui.welcomeMsg();
-
             boolean running = true;
-
             while (running) {
-                ui.introduktion();
                 int userResponse = scan.nextInt();
                 switch (userResponse) {
                     case 1 -> {

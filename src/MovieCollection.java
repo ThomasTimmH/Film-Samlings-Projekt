@@ -1,10 +1,8 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MovieCollection {
     private ArrayList<Movie> MovieList = new ArrayList();
-
 
     public void addMovie(Movie movie) {
         MovieList.add(movie);
