@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class MovieCollection {
     private ArrayList<Movie> MovieList = new ArrayList();
-
+    private ArrayList<Movie> MovieMatchFound = new ArrayList();
 
     public void addMovie(Movie movie) {
         MovieList.add(movie);
@@ -31,7 +31,7 @@ public class MovieCollection {
         boolean found = false;
         for (Movie movie : MovieList) {
             if (movie.getTitle().contains(letterSearch)) {
-                System.out.println("Movies found: \n" + movie);
+                System.out.println("Movie found: \n" + movie);
                 found = true;
             }
         }
