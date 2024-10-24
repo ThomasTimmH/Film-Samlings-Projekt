@@ -1,21 +1,17 @@
-import java.util.ArrayList;
-
 public class MovieController {
-    MovieCollection bob = new MovieCollection();
+    MovieCollection movieCollection = new MovieCollection();
 
-    public void showAllMovies(){
-        bob.displayMovies();
+    public void showAllMovies() {
+        movieCollection.displayMovies();
     }
 
-    public void addMovie1(Movie movie){
-        bob.addMovie(movie);
+    public void addMovie1(Movie movie) {
+        movieCollection.addMovie(movie);
     }
 
-    public void searchMovie1(String search){
-        bob.searchMovie(search);
+    public void searchMovie1(String search) {
+        movieCollection.searchMovie(search);
     }
-
-
 
 
 }

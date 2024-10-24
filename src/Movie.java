@@ -15,31 +15,31 @@ public class Movie {
         this.genre = genre;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public String getDirector(){
+    public String getDirector() {
         return director;
     }
 
-    public int getYearCreated(){
+    public int getYearCreated() {
         return yearCreated;
     }
 
-    public String isInColor(){
+    public String isInColor() {
         return isInColor;
     }
 
-    public int getLengthInMinutes(){
+    public int getLengthInMinutes() {
         return lengthInMinutes;
     }
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
 
-    public String toString(){
+    public String toString() {
         return "Movie title: " + title + " \nDirector: " + director + " \nyear created: " + yearCreated + " \nis in color: "
                 + isInColor + " \nlength in minutes: " + lengthInMinutes + " \ngenre: " + genre + "\n\n";
     }

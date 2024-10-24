@@ -9,12 +9,12 @@ public class MovieCollection {
     }
 
 
-    public String toString(){
+    public String toString() {
         return MovieList.toString();
     }
 
     public void searchMovie(String Search) {
-        Search=Search.toLowerCase();
+        Search = Search.toLowerCase();
         boolean found = false;
         for (Movie movie : MovieList) {
             if (movie.getTitle().toLowerCase().contains(Search)) {
@@ -23,15 +23,19 @@ public class MovieCollection {
             }
         }
 
-        if (!found){
+        if (!found) {
             System.out.println("\nThe movie you are looking for doesn't exist\n");
         }
     }
 
-    public void displayMovies(){
-        for(Movie movie : MovieList){
+    public void displayMovies() {
+        for (Movie movie : MovieList) {
             System.out.println(movie.toString());
         }
+    }
+
+    public void editMovies(){
+
     }
 
 
