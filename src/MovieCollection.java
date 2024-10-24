@@ -34,9 +34,21 @@ public class MovieCollection {
         }
     }
 
-    public void editMovies(){
-
+    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre) {
+        search = search.toUpperCase();
+        for (Movie movie : MovieList) {
+            if (movie.getTitle().equalsIgnoreCase(search)) {
+                movie.setTitle(newTitle);
+                movie.setDirector(newDirector);
+                movie.setYearCreated(newYear);
+                movie.setIsInColor(newIsInColor);
+                movie.setLengthInMinutes(newLength);
+                movie.setGenre(newGenre);
+                return true;
+            }
+        } return false;
     }
+
 
 
 }
