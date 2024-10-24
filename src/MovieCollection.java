@@ -8,22 +8,21 @@ public class MovieCollection {
         MovieList.add(movie);
     }
 
-    public String toString(){
+    public String toString() {
         return MovieList.toString();
     }
 
-    public void searchMovie(String titleSearch){
+    public void searchMovie(String titleSearch) {
         boolean found = false;
-        for(Movie movie : MovieList){
-            if(movie.getTitle().equals(titleSearch)){
+        for (Movie movie : MovieList) {
+            if (movie.getTitle().equals(titleSearch)) {
                 System.out.println("The movie(s) found:" + movie.getTitle());
                 found = true;
+            } else {
+                System.out.println("Could not find the movie you are looking for");
             }
         }
-       if(!found){
-           System.out.println("Could not find the movie you are looking for");
-       }
+
+
     }
-
-
 }
