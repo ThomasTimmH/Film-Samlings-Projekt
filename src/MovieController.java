@@ -7,7 +7,15 @@ public class MovieController {
         Scanner scan = new Scanner(System.in);
 
         Movie testMovie = new Movie("Poop", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie1 = new Movie("Penisp", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie2 = new Movie("poop", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie3 = new Movie("doop", "Timm", 1992, "yes", 180, "Drama");
+
         MovieCollection movieCollection = new MovieCollection();
+        movieCollection.addMovie(testMovie);
+        movieCollection.addMovie(testMovie1);
+        movieCollection.addMovie(testMovie2);
+        movieCollection.addMovie(testMovie3);
 
         System.out.println("Welcome to your movie collection!");
 
@@ -16,7 +24,7 @@ public class MovieController {
         while (running) {
             System.out.println("1. Create movie entry");
             System.out.println("2. See movie list");
-            System.out.println("3. Go into search menu");
+            System.out.println("3. Search movie, by title");
             System.out.println("4. Exit");
             int userResponse = scan.nextInt();
             switch (userResponse) {
@@ -49,12 +57,15 @@ public class MovieController {
                     movieCollection.addMovie(userMovie);
                 }
                 case 2 -> System.out.println(movieCollection);
-                case 3 ->
-                {
+                case 3 -> {
                     System.out.println("Please write the title of the movies you are looking for");
                     scan.nextLine();
-                    String userSearch = scan.nextLine();
-                    movieCollection.searchMovie(userSearch);
+                    String titleSearch = scan.nextLine();
+                    if (titleSearch.length() > 1){
+                        movieCollection.searchMovie(titleSearch);
+                    } else if (titleSearch.length() == 1){
+                        movieCollection.searchMovieByLetter(titleSearch);
+                    }
                 }
                 case 4 -> running = false;
             }
