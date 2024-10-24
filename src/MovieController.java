@@ -6,6 +6,7 @@ public class MovieController {
 
         Scanner scan = new Scanner(System.in);
 
+        Movie testMovie = new Movie("Poop", "Timm", 1992, "yes", 180, "Drama");
         MovieCollection movieCollection = new MovieCollection();
 
         System.out.println("Welcome to your movie collection!");
