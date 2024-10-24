@@ -10,17 +10,23 @@ public class MovieCollection {
         MovieList.add(movie);
     }
 
+
     public String toString(){
         return MovieList.toString();
     }
 
     public void searchMovie(String Search) {
         Search=Search.toLowerCase();
+        boolean found = false;
         for (Movie movie : MovieList) {
             if (movie.getTitle().toLowerCase().contains(Search)) {
                 System.out.println("Movies found: \n" + movie);
-
+                found = true;
             }
+        }
+
+        if (!found){
+            System.out.println("\nThe movie you are looking for doesn't exist\n");
         }
     }
 
