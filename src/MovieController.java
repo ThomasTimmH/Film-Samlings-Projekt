@@ -6,7 +6,16 @@ public class MovieController {
 
         Scanner scan = new Scanner(System.in);
 
+        Movie testMovie = new Movie("Poop", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie1 = new Movie("Penisp", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie2 = new Movie("poop", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie3 = new Movie("doop", "Timm", 1992, "yes", 180, "Drama");
+
         MovieCollection movieCollection = new MovieCollection();
+        movieCollection.addMovie(testMovie);
+        movieCollection.addMovie(testMovie1);
+        movieCollection.addMovie(testMovie2);
+        movieCollection.addMovie(testMovie3);
 
         System.out.println("Welcome to your movie collection!");
 
@@ -52,7 +61,11 @@ public class MovieController {
                     System.out.println("Please write the title of the movies you are looking for");
                     scan.nextLine();
                     String titleSearch = scan.nextLine();
-                    movieCollection.searchMovie(titleSearch);
+                    if (titleSearch.length() > 1){
+                        movieCollection.searchMovie(titleSearch);
+                    } else if (titleSearch.length() == 1){
+                        movieCollection.searchMovieByLetter(titleSearch);
+                    }
                 }
                 case 4 -> running = false;
             }
