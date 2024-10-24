@@ -6,10 +6,10 @@ public class MovieController {
 
         Scanner scan = new Scanner(System.in);
 
-        Movie testMovie = new Movie("Poop", "Timm", 1992, "yes", 180, "Drama");
-        Movie testMovie1 = new Movie("Penisp", "Timm", 1992, "yes", 180, "Drama");
-        Movie testMovie2 = new Movie("poop", "Timm", 1992, "yes", 180, "Drama");
-        Movie testMovie3 = new Movie("doop", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie = new Movie("Food", "Timm", 1993, "yes", 180, "Drama");
+        Movie testMovie1 = new Movie("Penis", "Timm", 1992, "yes", 180, "Drama");
+        Movie testMovie2 = new Movie("Poop", "Timm", 1921, "yes", 180, "Drama");
+        Movie testMovie3 = new Movie("Doop", "Timm", 1991, "yes", 180, "Drama");
 
         MovieCollection movieCollection = new MovieCollection();
         movieCollection.addMovie(testMovie);
@@ -61,7 +61,7 @@ public class MovieController {
                     System.out.println("Please write the title of the movies you are looking for");
                     scan.nextLine();
                     String titleSearch = scan.nextLine();
-                    if (titleSearch.length()>0) {
+                    if (!titleSearch.isEmpty()) {
                         movieCollection.searchMovie(titleSearch);
                     }else {
                         System.out.println("You have to write at least one letter to search");
