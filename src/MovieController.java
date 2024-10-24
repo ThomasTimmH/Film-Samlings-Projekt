@@ -61,10 +61,10 @@ public class MovieController {
                     System.out.println("Please write the title of the movies you are looking for");
                     scan.nextLine();
                     String titleSearch = scan.nextLine();
-                    if (titleSearch.length() > 1){
+                    if (titleSearch.length()>0) {
                         movieCollection.searchMovie(titleSearch);
-                    } else if (titleSearch.length() == 1){
-                        movieCollection.searchMovieByLetter(titleSearch);
+                    }else {
+                        System.out.println("You have to write at least one letter to search");
                     }
                 }
                 case 4 -> running = false;
