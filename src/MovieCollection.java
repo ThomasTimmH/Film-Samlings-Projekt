@@ -28,6 +28,15 @@ public class MovieCollection {
         }
     }
 
+
+    public int getMovieNumber(){
+        int numberOfMovies = 0;
+        for (Movie movie : MovieList){
+            numberOfMovies++;
+        }
+        return numberOfMovies;
+    }
+
     public void displayMovies() {
         for (Movie movie : MovieList) {
             System.out.println(movie.toString());
