@@ -34,6 +34,10 @@ public class MovieCollection {
         }
     }
 
+    public ArrayList<Movie> getMovieList(){
+        return MovieList;
+    }
+
     public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre) {
         search = search.toUpperCase();
         for (Movie movie : MovieList) {
