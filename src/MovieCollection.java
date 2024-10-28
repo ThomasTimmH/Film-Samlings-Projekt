@@ -28,10 +28,23 @@ public class MovieCollection {
         }
     }
 
+
+    public int getMovieNumber(){
+        int numberOfMovies = 0;
+        for (Movie movie : MovieList){
+            numberOfMovies++;
+        }
+        return numberOfMovies;
+    }
+
     public void displayMovies() {
         for (Movie movie : MovieList) {
             System.out.println(movie.toString());
         }
+    }
+
+    public ArrayList<Movie> getMovieList(){
+        return MovieList;
     }
 
     public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre) {
