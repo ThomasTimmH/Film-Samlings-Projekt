@@ -13,7 +13,17 @@ public class MovieCollection {
         return MovieList.toString();
     }
 
-    public void searchMovie(String Search) {
+    public Movie searchMovie(String search) {
+        search = search.toLowerCase();
+        for (Movie movie : MovieList) {
+            if (movie.getTitle().toLowerCase().contains(search)) {
+                return movie;
+            }
+        }
+        return null;
+    }
+
+    public void searchMovies(String Search) {
         Search = Search.toLowerCase();
         boolean found = false;
         for (Movie movie : MovieList) {
@@ -29,9 +39,10 @@ public class MovieCollection {
     }
 
 
-    public int getMovieNumber(){
+
+    public int getMovieNumber() {
         int numberOfMovies = 0;
-        for (Movie movie : MovieList){
+        for (Movie movie : MovieList) {
             numberOfMovies++;
         }
         return numberOfMovies;
@@ -43,7 +54,7 @@ public class MovieCollection {
         }
     }
 
-    public ArrayList<Movie> getMovieList(){
+    public ArrayList<Movie> getMovieList() {
         return MovieList;
     }
 
@@ -59,9 +70,9 @@ public class MovieCollection {
                 movie.setGenre(newGenre);
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
-
 
 
 }
