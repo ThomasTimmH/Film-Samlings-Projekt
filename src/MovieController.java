@@ -12,7 +12,7 @@ public class MovieController {
     }
 
     public void searchMovie1(String search) {
-        movieCollection.searchMovie(search);
+        movieCollection.searchMovies(search);
     }
 
     public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre){
