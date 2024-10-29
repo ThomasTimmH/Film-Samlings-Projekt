@@ -39,7 +39,6 @@ public class MovieCollection {
     }
 
 
-
     public int getMovieNumber() {
         int numberOfMovies = 0;
         for (Movie movie : MovieList) {

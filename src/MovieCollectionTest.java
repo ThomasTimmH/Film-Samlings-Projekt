@@ -73,11 +73,11 @@ class MovieCollectionTest {
         // Act - Brug PlayList's findTrack metode til at finde et Track som vi ved ikke findes i PlayList. Resultatet af dette metodekald tildeles variablen actualResult som skal være af typen Track.
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, "Yes", 22, "Drama");
         movieCollection.addMovie(movie3);
-        // Movie movie = movieCollection.searchMovie("Bruno");
+        Movie movie = movieCollection.searchMovie("Bruno");
 
 
         // Assert - Brug Assertion metoden assertNull og giv den actualResult som argument .
-        // Assertions.assertNull(movie);
+        Assertions.assertNull(movie);
     }
 
 
