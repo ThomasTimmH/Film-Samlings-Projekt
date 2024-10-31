@@ -127,6 +127,7 @@ public class UI {
         System.out.println("2. See movie list");
         System.out.println("3. Search movie, by title");
         System.out.println("4. Edit movie by searching after title");
+        System.out.println("5. Delete movie from list");
         System.out.println("5. Exit");
     }
 
