@@ -25,52 +25,65 @@ public class UI {
         while (running) {
             displayMenu();
             int userResponse = validateInt();
-                switch (userResponse) {
-                    case 1 -> {
-                        System.out.println("Enter Title:");
-                        scan.nextLine();
-                        String userTitle = scan.nextLine();
+            switch (userResponse) {
+                case 1 -> {
+                    System.out.println("Enter Title:");
+                    scan.nextLine();
+                    String userTitle = scan.nextLine();
 
-                        System.out.println("Enter a director");
-                        String userDirector = scan.nextLine();
+                    System.out.println("Enter a director");
+                    String userDirector = scan.nextLine();
 
-                        System.out.println("Enter the year the movie was made: ");
-                        int movieYear = validateInt();
+                    System.out.println("Enter the year the movie was made: ");
+                    int movieYear = validateInt();
 
-                        System.out.println("Is the movie colored?");
-                        scan.nextLine();
-                        String userColor = scan.nextLine();
+                    System.out.println("Is the movie colored?");
+                    scan.nextLine();
+                    String userColor = scan.nextLine();
 
-                        System.out.println("Enter how long the movies is in minutes");
-                        int movieLength = validateInt();
+                    System.out.println("Enter how long the movies is in minutes");
+                    int movieLength = validateInt();
 
 
-                        System.out.println("Enter the movie's genre: ");
-                        scan.nextLine();
-                        String movieGenre = scan.nextLine();
+                    System.out.println("Enter the movie's genre: ");
+                    scan.nextLine();
+                    String movieGenre = scan.nextLine();
 
-                        Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
+                    Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
 
-                        controller.addMovie1(userMovie);
-                        System.out.println("Your movie " + userMovie.getTitle() + " has been added to the collection!");
-                    }
-                    case 2 -> controller.showAllMovies();
-                    case 3 -> {
-                        System.out.println("Please write the title of the movies you are looking for");
-                        scan.nextLine();
-                        String titleSearch = scan.nextLine();
-                        if (!titleSearch.isEmpty()) {
-                            controller.searchMovie1(titleSearch);
-                        } else {
-                            System.out.println("You have to write at least one letter to search");
-                        }
-                    }
-                    case 4 -> editMovie();
-
-                    case 5 -> running = false;
+                    controller.addMovie1(userMovie);
+                    System.out.println("Your movie " + userMovie.getTitle() + " has been added to the collection!");
                 }
+                case 2 -> controller.showAllMovies();
+                case 3 -> {
+                    System.out.println("Please write the title of the movies you are looking for");
+                    scan.nextLine();
+                    String titleSearch = scan.nextLine();
+                    if (!titleSearch.isEmpty()) {
+                        controller.searchMovie1(titleSearch);
+                    } else {
+                        System.out.println("You have to write at least one letter to search");
+                    }
+                }
+                case 4 -> editMovie();
+                case 5 -> deleteMovie();
+                case 6 -> running = false;
+            }
         }
 
+    }
+
+    private void deleteMovie() {
+        System.out.println("Enter the title of the movie you want to delete:");
+        scan.nextLine();
+        String titleToDelete = scan.nextLine();
+
+        boolean success = controller.deleteMovie(titleToDelete);
+        if (success) {
+            System.out.println("Movie '" + titleToDelete + "' has been deleted successfully.");
+        } else {
+            System.out.println("Movie not found.");
+        }
     }
 
     private void editMovie() {
@@ -108,7 +121,7 @@ public class UI {
     }
 
 
-    private void displayMenu(){
+    private void displayMenu() {
         System.out.println();
         System.out.println("1. Create movie entry");
         System.out.println("2. See movie list");

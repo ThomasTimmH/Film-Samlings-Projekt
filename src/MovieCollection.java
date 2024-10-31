@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MovieCollection {
@@ -73,5 +72,16 @@ public class MovieCollection {
         return false;
     }
 
-
+    public boolean deleteMovie(String titleToDelete) {
+        for (int i = 0; i < MovieList.size(); i++) {
+            if (MovieList.get(i).getTitle().equalsIgnoreCase(titleToDelete)) {
+                MovieList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
+

@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class MovieController {
     MovieCollection movieCollection = new MovieCollection();
 
@@ -15,11 +13,12 @@ public class MovieController {
         movieCollection.searchMovies(search);
     }
 
-    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre){
-return movieCollection.editMovie(search, newTitle, newDirector, newYear, newLength, newIsInColor, newGenre);
+    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre) {
+        return movieCollection.editMovie(search, newTitle, newDirector, newYear, newLength, newIsInColor, newGenre);
     }
 
-
-
+    public boolean deleteMovie(String titleToDelete) {
+        return movieCollection.deleteMovie(titleToDelete);
+    }
 }
 
