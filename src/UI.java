@@ -11,10 +11,10 @@ public class UI {
 
         System.out.println("Welcome to your movie collection!");
 
-        Movie testMovie = new Movie("Food", "Timm", 1993, "yes", 180, "Drama");
-        Movie testMovie1 = new Movie("Penis", "Timm", 1992, "yes", 180, "Drama");
-        Movie testMovie2 = new Movie("Poop", "Timm", 1921, "yes", 180, "Drama");
-        Movie testMovie3 = new Movie("Doop", "Timm", 1991, "yes", 180, "Drama");
+        Movie testMovie = new Movie("Food", "Timm", 1993, true, 180, "Drama");
+        Movie testMovie1 = new Movie("Penis", "Timm", 1992, true, 180, "Drama");
+        Movie testMovie2 = new Movie("Poop", "Timm", 1921, true, 180, "Drama");
+        Movie testMovie3 = new Movie("Doop", "Timm", 1991, true, 180, "Drama");
 
         controller.addMovie1(testMovie);
         controller.addMovie1(testMovie1);
@@ -39,7 +39,7 @@ public class UI {
 
                     System.out.println("Is the movie colored?");
                     scan.nextLine();
-                    String userColor = scan.nextLine();
+                    boolean userColor = validateBoolean();
 
                     System.out.println("Enter how long the movies is in minutes");
                     int movieLength = validateInt();
@@ -103,7 +103,7 @@ public class UI {
 
         System.out.println("Is the movie in color? (yes/no): ");
         scan.nextLine();
-        String newIsInColor = scan.nextLine();
+        boolean newIsInColor = validateBoolean();
 
         System.out.println("Enter new length in minutes: ");
         int newLength = validateInt();
@@ -138,10 +138,34 @@ public class UI {
                 return scan.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid value.");
-                scan.nextLine(); // Consume the invalid input
+                scan.nextLine(); // Remove the next line
+            }
+        }
+
+    }
+
+    private boolean validateBoolean(){
+        while (true){
+            try{
+                String userResponse = scan.nextLine();
+                if (userResponse.equalsIgnoreCase("yes")){
+                    return true;
+                } else if (userResponse.equalsIgnoreCase("no")){
+                    return false;
+                } else {
+                    System.out.println("Please enter yes/no");
+                }
+            }
+            catch (Exception e){
+                System.out.println("An error has occured: " + e.getMessage());
+                scan.nextLine();
             }
         }
     }
+
+
+
+    // Lav en addMovie metode
 }
 
 

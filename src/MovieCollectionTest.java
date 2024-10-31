@@ -10,7 +10,7 @@ class MovieCollectionTest {
     @Test
     void addMovie() {
         MovieCollection gg = new MovieCollection();
-        Movie inception = new Movie("Inception", "gg", 2003, "Yes", 22, "Drama");
+        Movie inception = new Movie("Inception", "gg", 2003, true, 22, "Drama");
         gg.addMovie(inception);
         String expectedResult = "Inception";
         String actualResult = inception.getTitle();
@@ -20,9 +20,9 @@ class MovieCollectionTest {
     @Test
     void getMovieNumber(){
         MovieCollection movieCollection = new MovieCollection();
-        Movie movie1 = new Movie("Shawshank Redemption", "gg", 2003, "Yes", 22, "Drama");
-        Movie movie2 = new Movie("The Prestige", "gg", 2003, "Yes", 22, "Drama");
-        Movie movie3 = new Movie("Hunger Games", "gg", 2003, "Yes", 22, "Drama");
+        Movie movie1 = new Movie("Shawshank Redemption", "gg", 2003, true, 22, "Drama");
+        Movie movie2 = new Movie("The Prestige", "gg", 2003, true, 22, "Drama");
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie1);
         movieCollection.addMovie(movie2);
         movieCollection.addMovie(movie3);
@@ -36,9 +36,9 @@ class MovieCollectionTest {
     @Test
     void getMovieList() {
         MovieCollection movieCollection = new MovieCollection();
-        Movie movie1 = new Movie("Shawshank Redemption", "gg", 2003, "Yes", 22, "Drama");
-        Movie movie2 = new Movie("The Prestige", "gg", 2003, "Yes", 22, "Drama");
-        Movie movie3 = new Movie("Hunger Games", "gg", 2003, "Yes", 22, "Drama");
+        Movie movie1 = new Movie("Shawshank Redemption", "gg", 2003, true, 22, "Drama");
+        Movie movie2 = new Movie("The Prestige", "gg", 2003, true, 22, "Drama");
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie1);
         movieCollection.addMovie(movie2);
         movieCollection.addMovie(movie3);
@@ -53,7 +53,7 @@ class MovieCollectionTest {
 
 
         // Act - Brug PlayList's findTrack metode til at finde dit nylavede Track objekt. Kald metoden getTitle på det track du har fundet og gem resultatet i en String variabel med navnet actualResult.
-        Movie movie3 = new Movie("Hunger Games", "gg", 2003, "Yes", 22, "Drama");
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie3);
         movieCollection.searchMovie("Hunger Games");
         String actualResult = movie3.getTitle();
@@ -71,7 +71,7 @@ class MovieCollectionTest {
         MovieCollection movieCollection = new MovieCollection();
 
         // Act - Brug PlayList's findTrack metode til at finde et Track som vi ved ikke findes i PlayList. Resultatet af dette metodekald tildeles variablen actualResult som skal være af typen Track.
-        Movie movie3 = new Movie("Hunger Games", "gg", 2003, "Yes", 22, "Drama");
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie3);
         Movie movie = movieCollection.searchMovie("Bruno");
 
@@ -89,8 +89,8 @@ class MovieCollectionTest {
 
 
         // Act - Brug PlayList's findTrack metode til at finde dit nylavede Track objekt. Kald metoden getTitle på det track du har fundet og gem resultatet i en String variabel med navnet actualResult.
-        Movie movie3 = new Movie("Hunger Games", "gg", 2003, "Yes", 22, "Drama");
-        Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, "Yes", 22, "Drama");
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
+        Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie3);
         movieCollection.addMovie(movie4);
         movieCollection.searchMovie("H");
