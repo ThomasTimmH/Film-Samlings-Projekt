@@ -97,18 +97,19 @@ public class UI {
         System.out.println("Enter new director: ");
         String newDirector = scan.nextLine();
 
-        System.out.println("Enter new length in minutes: ");
-        int newLength = scan.nextInt();
+        System.out.println("Enter new creation year: ");
+
+        int newYear = validateInt();
 
         System.out.println("Is the movie in color? (yes/no): ");
         scan.nextLine();
         String newIsInColor = scan.nextLine();
 
-        System.out.println("Enter new creation year: ");
-        scan.nextLine(); // Håndter linjeskift
-        int newYear = scan.nextInt();
+        System.out.println("Enter new length in minutes: ");
+        int newLength = validateInt();
 
         System.out.println("Enter new genre: ");
+        scan.nextLine();
         String newGenre = scan.nextLine();
 
         // Redigerer filmen via controlleren
