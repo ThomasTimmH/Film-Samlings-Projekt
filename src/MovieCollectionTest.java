@@ -76,25 +76,30 @@ class MovieCollectionTest {
         MovieCollection movieCollection = new MovieCollection();
 
 
-        // Act - Brug PlayList's findTrack metode til at finde dit nylavede Track objekt. Kald metoden getTitle på det track du har fundet og gem resultatet i en String variabel med navnet actualResult.
+        // Act
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie3);
-        Movie search = movieCollection.searchMovie("Hunger Games");
+        Movie searchFound = movieCollection.searchMovie("Hunger Games");
         String actualResult = movie3.getTitle();
         String expectedResult = "Hunger Games";
 
-        // Assert - Lav en String variabel som hedder expectedResult, og tildel den den String-værdi du leder efter.
-        // Brug herefter assertEquals således: assertEquals(expectedResult, actualResult).
-        assertEquals(expectedResult, actualResult);
+        // Assert - Vi gemmer search resultatet i en Movie type og sætter den op mod en "notNull"
+        // Derefter laver vi en AssertEquals med en direkte string titel mod den fundnens film titel**VIGTIGT
+        // Gamle kode = assertEquals(expectedResult, actualResult);
+        // Gamle kode gøre ikke hvad vi forventer Issue: searchMovie("Hunger Games") doesn’t store or check its result, so the test would pass even if searchMovie is broken or unimplemented.
+        // Her finder vi faktisk en film - ser om den fundne film er = null // hvis ikke er den fundet. derefter sammenligner vi fundet films titel med actual film titel.
+        assertNotNull(searchFound);
+        assertEquals(expectedResult, searchFound.getTitle());
+
     }
 
 
     @Test
     void searchMovieDoesNotExist(){
-        // Arrange - Lav et PlayList objekt, et Track objekt og tilføj Track objektet til PlayList.
+        // Arrange
         MovieCollection movieCollection = new MovieCollection();
 
-        // Act - Brug PlayList's findTrack metode til at finde et Track som vi ved ikke findes i PlayList. Resultatet af dette metodekald tildeles variablen actualResult som skal være af typen Track.
+        // Act
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie3);
 
@@ -114,6 +119,7 @@ class MovieCollectionTest {
 
 
 
+    // Vi skal lave en *SearchMovies* metode da vi kun har searchMovie
     @Test
     void searchMoviesExists(){
         MovieCollection movieCollection = new MovieCollection();
@@ -122,27 +128,28 @@ class MovieCollectionTest {
         // Act - Brug PlayList's findTrack metode til at finde dit nylavede Track objekt. Kald metoden getTitle på det track du har fundet og gem resultatet i en String variabel med navnet actualResult.
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, true, 22, "Drama");
+
         movieCollection.addMovie(movie3);
         movieCollection.addMovie(movie4);
-        movieCollection.searchMovie("H");
+        Movie searchResult = movieCollection.searchMovie("H");
         String actualResult = movieCollection.getMovieList().get(0).getTitle() + "" + movieCollection.getMovieList().get(1).getTitle();
         String expectedResult = "Hunger Games" + "Harry Potter 3";
 
-        // Assert - Lav en String variabel som hedder expectedResult, og tildel den den String-værdi du leder efter.
-        // Brug herefter assertEquals således: assertEquals(expectedResult, actualResult).
+        // Assert - først tjekker vi om den overhovedet fandt film ved at bruge assertNotNull
+        assertNotNull(searchResult);
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void displayMovies(){
-        ArrayList<Movie> arrayListMovies = new ArrayList<>();
+        MovieCollection movieCollection = new MovieCollection();
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, true, 22, "Drama");
-        arrayListMovies.add(movie3);
-        arrayListMovies.add(movie4);
+        movieCollection.addMovie(movie3);
+        movieCollection.addMovie(movie4);
 
         String expectedResult = movie3 + " " + movie4;
-        String actualResult = arrayListMovies.get(0).toString() + " " + arrayListMovies.get(1).toString();
+        String actualResult = movieCollection.getMovieList().get(0).toString() + " " + movieCollection.getMovieList().get(1).toString();
 
 
         assertEquals(expectedResult, actualResult);
