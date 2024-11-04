@@ -2,11 +2,11 @@ public class Movie {
     private String title;
     private String director;
     private int yearCreated;
-    private String isInColor;
+    private boolean isInColor;
     private int lengthInMinutes;
     private String genre;
 
-    public Movie(String title, String director, int yearCreated, String isInColor, int lengthInMinutes, String genre) {
+    public Movie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
         this.yearCreated = yearCreated;
@@ -27,8 +27,18 @@ public class Movie {
         return yearCreated;
     }
 
-    public String isInColor(){
+    public boolean isInColor(){
         return isInColor;
+    }
+
+    public String editColor(boolean isInColor){
+        String isInColorString = null;
+        if (isInColor){
+            isInColorString = "Yes";
+        } else {
+            isInColorString = "No";
+        }
+        return isInColorString;
     }
 
     public int getLengthInMinutes(){
@@ -57,7 +67,7 @@ public class Movie {
     }
 
 
-    public void setIsInColor(String isInColor){
+    public void setIsInColor(boolean isInColor){
         this.isInColor = isInColor;
     }
 
@@ -68,7 +78,6 @@ public class Movie {
 
 
     public String toString(){
-        return "Movie title: " + title + " \nDirector: " + director + " \nyear created: " + yearCreated + " \nis in color: "
-                + isInColor + " \nlength in minutes: " + lengthInMinutes + " \ngenre: " + genre + "\n\n";
+        return "Movie title: " + title + " \nDirector: " + director + " \nYear created: " + yearCreated + " \nIs in color: " + editColor(isInColor) + "\nLength in minutes: " + lengthInMinutes + "\nGenre: " + genre + "\n\n";
     }
 }

@@ -56,7 +56,7 @@ public class MovieCollection {
         return MovieList;
     }
 
-    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre) {
+    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, boolean newIsInColor, String newGenre) {
         search = search.toUpperCase();
         for (Movie movie : MovieList) {
             if (movie.getTitle().equalsIgnoreCase(search)) {
