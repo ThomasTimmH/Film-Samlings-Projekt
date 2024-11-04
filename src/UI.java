@@ -63,6 +63,7 @@ public class UI {
                 }
                 case 4 -> editMovie();
                 case 5 -> deleteMovie();
+
                 case 6 -> controller.saveMovies();
                 case 7 -> controller.loadMovies();
                 case 8 -> running = false;
