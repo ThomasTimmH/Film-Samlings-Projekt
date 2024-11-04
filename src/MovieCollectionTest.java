@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,6 +101,45 @@ class MovieCollectionTest {
 
         // Assert - Lav en String variabel som hedder expectedResult, og tildel den den String-værdi du leder efter.
         // Brug herefter assertEquals således: assertEquals(expectedResult, actualResult).
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void displayMovies(){
+        ArrayList<Movie> arrayListMovies = new ArrayList<>();
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
+        Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, true, 22, "Drama");
+        arrayListMovies.add(movie3);
+        arrayListMovies.add(movie4);
+
+        String expectedResult = movie3 + " " + movie4;
+        String actualResult = arrayListMovies.get(0).toString() + " " + arrayListMovies.get(1).toString();
+
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+
+    @Test
+    void editMovie(){
+
+    }
+
+
+
+    @Test
+    void deleteMovie(){
+        ArrayList<Movie> arrayListMovies = new ArrayList<>();
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
+        Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, true, 22, "Drama");
+        arrayListMovies.add(movie3);
+        arrayListMovies.add(movie4);
+
+        arrayListMovies.remove(0);
+
+        int expectedResult = 1;
+        int actualResult = arrayListMovies.size();
+
         assertEquals(expectedResult, actualResult);
     }
 
