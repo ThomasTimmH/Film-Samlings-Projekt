@@ -79,7 +79,7 @@ class MovieCollectionTest {
         // Act - Brug PlayList's findTrack metode til at finde dit nylavede Track objekt. Kald metoden getTitle på det track du har fundet og gem resultatet i en String variabel med navnet actualResult.
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         movieCollection.addMovie(movie3);
-        movieCollection.searchMovie("Hunger Games");
+        Movie search = movieCollection.searchMovie("Hunger Games");
         String actualResult = movie3.getTitle();
         String expectedResult = "Hunger Games";
 
@@ -102,6 +102,7 @@ class MovieCollectionTest {
 
         // Assert - Brug Assertion metoden assertNull og giv den actualResult som argument .
         Assertions.assertNull(movie);
+
     }
 
 
