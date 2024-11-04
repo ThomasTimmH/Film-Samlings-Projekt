@@ -37,15 +37,37 @@ class MovieCollectionTest {
     @Test
     void getMovieList() {
         MovieCollection movieCollection = new MovieCollection();
+
         Movie movie1 = new Movie("Shawshank Redemption", "gg", 2003, true, 22, "Drama");
         Movie movie2 = new Movie("The Prestige", "gg", 2003, true, 22, "Drama");
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
+
         movieCollection.addMovie(movie1);
         movieCollection.addMovie(movie2);
         movieCollection.addMovie(movie3);
-        ArrayList actualResult = movieCollection.getMovieList();
-        int expectedResult = 3;
-        assertEquals(actualResult.size(),expectedResult);
+
+        ArrayList actualResult1 = movieCollection.getMovieList();
+        int expectedResult1 = 3;
+
+
+        // Title expected/result
+        String expectedTitle1 = movie1.getTitle();
+        String actualTitle1 = movieCollection.getMovieList().get(0).getTitle();
+
+        String expectedTitle2 = movie2.getTitle();
+        String actualTitle2 = movieCollection.getMovieList().get(1).getTitle();
+
+        String expectedTitle3 = movie3.getTitle();
+        String actualTitle3 = movieCollection.getMovieList().get(2).getTitle();
+
+
+        // Confirm movie list length
+        assertEquals(actualResult1.size(),expectedResult1);
+
+        // Confirm movie 1, movie 2 and movie 3 are correctly placed in the array list
+        assertEquals(expectedTitle1, actualTitle1);
+        assertEquals(expectedTitle2, actualTitle2);
+        assertEquals(expectedTitle3, actualTitle3);
     }
 
 
