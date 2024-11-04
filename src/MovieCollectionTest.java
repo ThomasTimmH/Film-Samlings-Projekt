@@ -42,7 +42,8 @@ class MovieCollectionTest {
         movieCollection.addMovie(movie2);
         movieCollection.addMovie(movie3);
         ArrayList actualResult = movieCollection.getMovieList();
-        assertEquals(actualResult.size(),3);
+        int expectedResult = 3;
+        assertEquals(actualResult.size(),expectedResult);
     }
 }
 
