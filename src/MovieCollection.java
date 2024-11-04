@@ -104,15 +104,12 @@ public class MovieCollection {
                     // Format each movie data as a single line and write to the file
                     writer.write(movie.getTitle() + "|" + movie.getDirector() + "|" + movie.getYearCreated() + "|" +
                             movie.isInColor() + "|" + movie.getLengthInMinutes() + "|" + movie.getGenre() + "\n");
-
             }
                 System.out.println("Movies have been saved sucessfully");
                 isModified = false;
         } catch (IOException e) {
             System.out.println("Error saving movies: " + e.getMessage());
         }
-
-
     }
 
 
