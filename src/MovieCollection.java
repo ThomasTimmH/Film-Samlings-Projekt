@@ -9,10 +9,11 @@ import java.util.Scanner;
 public class MovieCollection {
     private ArrayList<Movie> MovieList = new ArrayList();
     private static final String FILE_NAME = "movies.txt";
-    ArrayList<Movie> copymovieList = new ArrayList<>();
+    private boolean isModified = false; // Track if changes were made
 
     public void addMovie(Movie movie) {
         MovieList.add(movie);
+        isModified = true;
     }
 
 
@@ -74,6 +75,7 @@ public class MovieCollection {
                 movie.setIsInColor(newIsInColor);
                 movie.setLengthInMinutes(newLength);
                 movie.setGenre(newGenre);
+                isModified = true;
                 return true;
             }
         }
@@ -84,25 +86,30 @@ public class MovieCollection {
         for (int i = 0; i < MovieList.size(); i++) {
             if (MovieList.get(i).getTitle().equalsIgnoreCase(titleToDelete)) {
                 MovieList.remove(i);
+                isModified = true;
                 return true;
             }
         }
         return false;
     }
 
-private boolean isDataModified = false;
 
-    public String saveMoviesFile() {
+    public void saveMoviesFile() {
+        if (!isModified){
+            System.out.println("You have not made any changes to your movie list - file has not been saved");
+            return;
+        }
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
-            if(copymovieList.size() != MovieList.size()){
                 for (Movie movie : MovieList) {
                     // Format each movie data as a single line and write to the file
                     writer.write(movie.getTitle() + "|" + movie.getDirector() + "|" + movie.getYearCreated() + "|" +
                             movie.isInColor() + "|" + movie.getLengthInMinutes() + "|" + movie.getGenre() + "\n");
-                }
-            }return "Movies saved succesfully";
+
+            }
+                System.out.println("Movies have been saved sucessfully");
+                isModified = false;
         } catch (IOException e) {
-            return "Error saving movies: " + e.getMessage();
+            System.out.println("Error saving movies: " + e.getMessage());
         }
 
 
