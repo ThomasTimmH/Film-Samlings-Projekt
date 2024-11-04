@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
@@ -8,19 +9,12 @@ public class UI {
 
     public void Start() {
 
-
         System.out.println("Welcome to your movie collection!");
-        System.out.println();
-        System.out.println("1. Create movie entry");
-        System.out.println("2. See movie list");
-        System.out.println("3. Search movie, by title");
-        System.out.println("4. Edit movie by searching after title");
-        System.out.println("5. Exit");
 
-        Movie testMovie = new Movie("Food", "Timm", 1993, "yes", 180, "Drama");
-        Movie testMovie1 = new Movie("Penis", "Timm", 1992, "yes", 180, "Drama");
-        Movie testMovie2 = new Movie("Poop", "Timm", 1921, "yes", 180, "Drama");
-        Movie testMovie3 = new Movie("Doop", "Timm", 1991, "yes", 180, "Drama");
+        Movie testMovie = new Movie("Food", "Timm", 1993, true, 180, "Drama");
+        Movie testMovie1 = new Movie("Penis", "Timm", 1992, true, 180, "Drama");
+        Movie testMovie2 = new Movie("Poop", "Timm", 1921, true, 180, "Drama");
+        Movie testMovie3 = new Movie("Doop", "Timm", 1991, true, 180, "Drama");
 
         controller.addMovie1(testMovie);
         controller.addMovie1(testMovie1);
@@ -29,7 +23,8 @@ public class UI {
 
         boolean running = true;
         while (running) {
-            int userResponse = scan.nextInt();
+            displayMenu();
+            int userResponse = validateInt();
             switch (userResponse) {
                 case 1 -> {
                     System.out.println("Enter Title:");
@@ -40,24 +35,24 @@ public class UI {
                     String userDirector = scan.nextLine();
 
                     System.out.println("Enter the year the movie was made: ");
-                    int movieYear = scan.nextInt();
+                    int movieYear = validateInt();
 
                     System.out.println("Is the movie colored?");
                     scan.nextLine();
-                    String userColor = scan.nextLine();
+                    boolean userColor = validateBoolean();
 
-                    System.out.println("Enter how long the movies is");
-                    int movieLength = scan.nextInt();
+                    System.out.println("Enter how long the movies is in minutes");
+                    int movieLength = validateInt();
 
 
                     System.out.println("Enter the movie's genre: ");
                     scan.nextLine();
                     String movieGenre = scan.nextLine();
 
-
                     Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
 
                     controller.addMovie1(userMovie);
+                    System.out.println("Your movie " + userMovie.getTitle() + " has been added to the collection!");
                 }
                 case 2 -> controller.showAllMovies();
                 case 3 -> {
@@ -70,10 +65,24 @@ public class UI {
                         System.out.println("You have to write at least one letter to search");
                     }
                 }
-                case 4 ->  editMovie();
-
-                case 5 -> running = false;
+                case 4 -> editMovie();
+                case 5 -> deleteMovie();
+                case 6 -> running = false;
             }
+        }
+
+    }
+
+    private void deleteMovie() {
+        System.out.println("Enter the title of the movie you want to delete:");
+        scan.nextLine();
+        String titleToDelete = scan.nextLine();
+
+        boolean success = controller.deleteMovie(titleToDelete);
+        if (success) {
+            System.out.println("Movie '" + titleToDelete + "' has been deleted successfully.");
+        } else {
+            System.out.println("Movie not found.");
         }
     }
 
@@ -88,18 +97,19 @@ public class UI {
         System.out.println("Enter new director: ");
         String newDirector = scan.nextLine();
 
-        System.out.println("Enter new length in minutes: ");
-        int newLength = scan.nextInt();
+        System.out.println("Enter new creation year: ");
+
+        int newYear = validateInt();
 
         System.out.println("Is the movie in color? (yes/no): ");
         scan.nextLine();
-        String newIsInColor = scan.nextLine();
+        boolean newIsInColor = validateBoolean();
 
-        System.out.println("Enter new creation year: ");
-        int newYear = scan.nextInt();
-        scan.nextLine(); // Håndter linjeskift
+        System.out.println("Enter new length in minutes: ");
+        int newLength = validateInt();
 
         System.out.println("Enter new genre: ");
+        scan.nextLine();
         String newGenre = scan.nextLine();
 
         // Redigerer filmen via controlleren
@@ -110,6 +120,52 @@ public class UI {
             System.out.println("Movie not found.");
         }
     }
+
+
+    private void displayMenu() {
+        System.out.println();
+        System.out.println("1. Create movie entry");
+        System.out.println("2. See movie list");
+        System.out.println("3. Search movie, by title");
+        System.out.println("4. Edit movie by searching after title");
+        System.out.println("5. Delete movie from list");
+        System.out.println("6. Exit");
+    }
+
+    private int validateInt() {
+        while (true) {
+            try {
+                return scan.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a valid value.");
+                scan.nextLine(); // Remove the next line
+            }
+        }
+
+    }
+
+    private boolean validateBoolean(){
+        while (true){
+            try{
+                String userResponse = scan.nextLine();
+                if (userResponse.equalsIgnoreCase("yes")){
+                    return true;
+                } else if (userResponse.equalsIgnoreCase("no")){
+                    return false;
+                } else {
+                    System.out.println("Please enter yes/no");
+                }
+            }
+            catch (Exception e){
+                System.out.println("An error has occured: " + e.getMessage());
+                scan.nextLine();
+            }
+        }
+    }
+
+
+
+    // Lav en addMovie metode
 }
 
 

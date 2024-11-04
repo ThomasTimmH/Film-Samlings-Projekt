@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MovieCollection {
@@ -13,7 +12,17 @@ public class MovieCollection {
         return MovieList.toString();
     }
 
-    public void searchMovie(String Search) {
+    public Movie searchMovie(String search) {
+        search = search.toLowerCase();
+        for (Movie movie : MovieList) {
+            if (movie.getTitle().toLowerCase().contains(search)) {
+                return movie;
+            }
+        }
+        return null;
+    }
+
+    public void searchMovies(String Search) {
         Search = Search.toLowerCase();
         boolean found = false;
         for (Movie movie : MovieList) {
@@ -29,9 +38,9 @@ public class MovieCollection {
     }
 
 
-    public int getMovieNumber(){
+    public int getMovieNumber() {
         int numberOfMovies = 0;
-        for (Movie movie : MovieList){
+        for (Movie movie : MovieList) {
             numberOfMovies++;
         }
         return numberOfMovies;
@@ -43,11 +52,11 @@ public class MovieCollection {
         }
     }
 
-    public ArrayList<Movie> getMovieList(){
+    public ArrayList<Movie> getMovieList() {
         return MovieList;
     }
 
-    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, String newIsInColor, String newGenre) {
+    public boolean editMovie(String search, String newTitle, String newDirector, int newYear, int newLength, boolean newIsInColor, String newGenre) {
         search = search.toUpperCase();
         for (Movie movie : MovieList) {
             if (movie.getTitle().equalsIgnoreCase(search)) {
@@ -59,9 +68,20 @@ public class MovieCollection {
                 movie.setGenre(newGenre);
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
 
-
-
+    public boolean deleteMovie(String titleToDelete) {
+        for (int i = 0; i < MovieList.size(); i++) {
+            if (MovieList.get(i).getTitle().equalsIgnoreCase(titleToDelete)) {
+                MovieList.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
+
