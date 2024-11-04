@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class MovieCollection {
     private ArrayList<Movie> MovieList = new ArrayList();
     private static final String FILE_NAME = "movies.txt";
+    ArrayList<Movie> copymovieList = new ArrayList<>();
 
     public void addMovie(Movie movie) {
         MovieList.add(movie);
@@ -89,19 +90,21 @@ public class MovieCollection {
         return false;
     }
 
-
+private boolean isDataModified = false;
 
     public String saveMoviesFile() {
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
-            for (Movie movie : MovieList) {
-                // Format each movie data as a single line and write to the file
-                writer.write(movie.getTitle() + "|" + movie.getDirector() + "|" + movie.getYearCreated() + "|" +
-                        movie.isInColor() + "|" + movie.getLengthInMinutes() + "|" + movie.getGenre() + "\n");
-            }
+            if(copymovieList.size() != MovieList.size()){
+                for (Movie movie : MovieList) {
+                    // Format each movie data as a single line and write to the file
+                    writer.write(movie.getTitle() + "|" + movie.getDirector() + "|" + movie.getYearCreated() + "|" +
+                            movie.isInColor() + "|" + movie.getLengthInMinutes() + "|" + movie.getGenre() + "\n");
+                }
+            }return "Movies saved succesfully";
         } catch (IOException e) {
             return "Error saving movies: " + e.getMessage();
         }
-        return "Movies saved sucessfully";
+
 
     }
 
