@@ -44,7 +44,8 @@ class MovieCollectionTest {
         movieCollection.addMovie(movie2);
         movieCollection.addMovie(movie3);
         ArrayList actualResult = movieCollection.getMovieList();
-        assertEquals(actualResult.size(),3);
+        int expectedResult = 3;
+        assertEquals(actualResult.size(),expectedResult);
     }
 
 
@@ -121,7 +122,14 @@ class MovieCollectionTest {
 
     @Test
     void editMovie(){
+ArrayList<Movie> arrayListMovies = new ArrayList<>();
+        Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
+        arrayListMovies.add(movie3);
+        movie3.setTitle("Stuck in the dryer");
+        String expectedResult = "Stuck in the dryer";
+        String actualResult = movie3.getTitle();
 
+        assertEquals(expectedResult,actualResult);
     }
 
 
