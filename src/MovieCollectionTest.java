@@ -158,12 +158,14 @@ class MovieCollectionTest {
 
     @Test
     void editMovie(){
-ArrayList<Movie> arrayListMovies = new ArrayList<>();
+        MovieCollection movieCollection = new MovieCollection();
+        ArrayList<Movie> arrayListMovies = movieCollection.getMovieList();
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
+
         arrayListMovies.add(movie3);
         movie3.setTitle("Stuck in the dryer");
         String expectedResult = "Stuck in the dryer";
-        String actualResult = movie3.getTitle();
+        String actualResult = arrayListMovies.get(0).getTitle();
 
         assertEquals(expectedResult,actualResult);
     }
