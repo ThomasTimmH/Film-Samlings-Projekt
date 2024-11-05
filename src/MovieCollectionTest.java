@@ -172,16 +172,17 @@ ArrayList<Movie> arrayListMovies = new ArrayList<>();
 
     @Test
     void deleteMovie(){
-        ArrayList<Movie> arrayListMovies = new ArrayList<>();
+        MovieCollection movieCollection = new MovieCollection();
+        ArrayList<Movie> movieArrayList = movieCollection.getMovieList();
         Movie movie3 = new Movie("Hunger Games", "gg", 2003, true, 22, "Drama");
         Movie movie4 = new Movie("Harry Potter 3", "gg", 2003, true, 22, "Drama");
-        arrayListMovies.add(movie3);
-        arrayListMovies.add(movie4);
+        movieArrayList.add(movie3);
+        movieArrayList.add(movie4);
 
-        arrayListMovies.remove(0);
+        movieArrayList.remove(0);
 
         int expectedResult = 1;
-        int actualResult = arrayListMovies.size();
+        int actualResult = movieArrayList.size();
 
         assertEquals(expectedResult, actualResult);
     }
