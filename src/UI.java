@@ -11,16 +11,6 @@ public class UI {
 
         System.out.println("Welcome to your movie collection!");
 
-        Movie testMovie = new Movie("Food", "Timm", 1993, true, 180, "Drama");
-        Movie testMovie1 = new Movie("Penis", "Timm", 1992, true, 180, "Drama");
-        Movie testMovie2 = new Movie("Poop", "Timm", 1921, true, 180, "Drama");
-        Movie testMovie3 = new Movie("Doop", "Timm", 1991, true, 180, "Drama");
-
-        controller.addMovie1(testMovie);
-        controller.addMovie1(testMovie1);
-        controller.addMovie1(testMovie2);
-        controller.addMovie1(testMovie3);
-
         boolean running = true;
         while (running) {
             displayMenu();
@@ -54,7 +44,13 @@ public class UI {
                     controller.addMovie1(userMovie);
                     System.out.println("Your movie " + userMovie.getTitle() + " has been added to the collection!");
                 }
-                case 2 -> controller.showAllMovies();
+                case 2 -> {
+                    if (!controller.movieCollection.getMovieList().isEmpty()) {
+                        controller.showAllMovies();
+                    } else {
+                        System.out.println("Movie list is empty");
+                    }
+                }
                 case 3 -> {
                     System.out.println("Please write the title of the movies you are looking for");
                     scan.nextLine();
@@ -67,7 +63,9 @@ public class UI {
                 }
                 case 4 -> editMovie();
                 case 5 -> deleteMovie();
-                case 6 -> running = false;
+                case 6 -> controller.saveMovies();
+                case 7 -> controller.loadMovies();
+                case 8 -> running = false;
             }
         }
 
@@ -121,7 +119,6 @@ public class UI {
         }
     }
 
-
     private void displayMenu() {
         System.out.println();
         System.out.println("1. Create movie entry");
@@ -129,7 +126,9 @@ public class UI {
         System.out.println("3. Search movie, by title");
         System.out.println("4. Edit movie by searching after title");
         System.out.println("5. Delete movie from list");
-        System.out.println("6. Exit");
+        System.out.println("6. Save movies");
+        System.out.println("7. Load movies");
+        System.out.println("8. Exit");
     }
 
     private int validateInt() {
@@ -162,10 +161,6 @@ public class UI {
             }
         }
     }
-
-
-
-    // Lav en addMovie metode
 }
 
 

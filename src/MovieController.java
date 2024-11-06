@@ -20,5 +20,14 @@ public class MovieController {
     public boolean deleteMovie(String titleToDelete) {
         return movieCollection.deleteMovie(titleToDelete);
     }
+
+    public void saveMovies(){
+        movieCollection.saveMoviesFile();
+    }
+
+    public void loadMovies(){
+        movieCollection.loadMoviesFile();
+    }
 }
+
 
