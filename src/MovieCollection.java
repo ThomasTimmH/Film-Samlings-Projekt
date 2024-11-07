@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -95,27 +96,27 @@ public class MovieCollection {
 
 
     public void saveMoviesFile() {
-        if (!isModified){
+        if (!isModified) {
             System.out.println("You have not made any changes to your movie list - file has not been saved");
             return;
         }
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
-                for (Movie movie : MovieList) {
-                    // Format each movie data as a single line and write to the file
-                    writer.write(movie.getTitle() + "|" + movie.getDirector() + "|" + movie.getYearCreated() + "|" +
-                            movie.isInColor() + "|" + movie.getLengthInMinutes() + "|" + movie.getGenre() + "\n");
+            for (Movie movie : MovieList) {
+                // Format each movie data as a single line and write to the file
+                writer.write(movie.getTitle() + "|" + movie.getDirector() + "|" + movie.getYearCreated() + "|" +
+                        movie.isInColor() + "|" + movie.getLengthInMinutes() + "|" + movie.getGenre() + "\n");
             }
-                System.out.println("Movies have been saved sucessfully");
-                isModified = false;
+            System.out.println("Movies have been saved sucessfully");
+            isModified = false;
         } catch (IOException e) {
             System.out.println("Error saving movies: " + e.getMessage());
         }
     }
 
 
-    public void loadMoviesFile(){
-        try(Scanner scan = new Scanner(new File("movies.txt"))){
-            while (scan.hasNextLine()){
+    public void loadMoviesFile() {
+        try (Scanner scan = new Scanner(new File("movies.txt"))) {
+            while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] data = line.split("\\|");
                 if (data.length == 6) {
@@ -130,12 +131,32 @@ public class MovieCollection {
                 }
             }
             System.out.println("Movies loaded sucessfully");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("An error has occured: " + e.getMessage());
         }
     }
 
+    public ArrayList<Movie> sortMovies (String attribute) {
+        String Choice = attribute;
+        switch (Choice) {
+            case "title" -> {
+                MovieList.sort(new MovieTitleComparator());
+            }
+            case "director" -> {
+                MovieList.sort(new MovieDirectorComparator());
+            }
+            case "year created" -> {
+                MovieList.sort(new MovieYearCreatedComparator());
+            }
+            case "lengthInMinutes" -> {
+                MovieList.sort(new MovieLengthInMinutesComparator());
+            }
+            case "genre" -> {
+                MovieList.sort(new MovieGenreComparator());
+            }
+        }
+        return MovieList;
+    }
 }
-
 
 

@@ -160,6 +160,14 @@ public class UI {
                 scan.nextLine();
             }
         }
+//        public void sortMovies (){
+//            System.out.println();
+//            System.out.println();
+//            System.out.println();
+//
+//            String scan = scanner.next();
+//            switch (scan)
+//        }
     }
 }
 
