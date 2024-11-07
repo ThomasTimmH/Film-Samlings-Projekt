@@ -3,9 +3,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MovieCollection {
     private ArrayList<Movie> MovieList = new ArrayList();
@@ -135,31 +134,82 @@ public class MovieCollection {
             System.out.println("An error has occured: " + e.getMessage());
         }
     }
-    public ArrayList<Movie> sortMovies (String attribute) {
+
+    public ArrayList<Movie> sortMovies(String attribute) {
+        boolean running = true;
         String Choice = attribute.toLowerCase();
+        while (running){
         switch (Choice) {
-            case "title" -> {
+            case "title","Title" -> {
                 MovieList.sort(new MovieTitleComparator());
+                running = false;
             }
-            case "director" -> {
+            case "director","Director" -> {
                 MovieList.sort(new MovieDirectorComparator());
+                running = false;
+
             }
-            case "year" -> {
+            case "year","Year" -> {
                 MovieList.sort(new MovieYearCreatedComparator().reversed());
+                running = false;
             }
-            case "length in minutes" -> {
+            case "is in color","iic","Is in color" -> {
+                MovieList.sort(new MovieIsInColorComparator());
+                running = false;
+            }
+            case "length in minutes","Length in minutes","lim" -> {
                 MovieList.sort(new MovieLengthInMinutesComparator());
+                running = false;
             }
-            case "genre" -> {
+            case "genre","Genre" -> {
                 MovieList.sort(new MovieGenreComparator());
+                running = false;
             }
             case "color" -> {
                 MovieList.sort(new MovieIsInColorComparator());
             }
-            default -> System.out.println("not a valid input, try again");
+            default -> {
+                System.out.println("Enter a valid sorting criteria");
+                Scanner scan = new Scanner(System.in);
+                Choice = scan.nextLine();
+            }
+        }
         }
         return MovieList;
     }
+
+    public Comparator<Movie> getComparatorByAttribute(String attribute) {
+        String choice = attribute.toLowerCase();
+
+        switch (choice.toLowerCase()) {
+            case "title" -> {
+                return Comparator.comparing(Movie::getTitle);
+            }
+            case "director" -> {
+                return Comparator.comparing(Movie::getDirector);
+            }
+            case "year" -> {
+                return Comparator.comparing(Movie::getYearCreated);
+            }
+            case "is in color","iic" -> {
+                MovieList.sort(new MovieIsInColorComparator());
+            }
+            case "length in minutes" -> {
+                return Comparator.comparing(Movie::getLengthInMinutes);
+            }
+            case "genre" -> {
+                return Comparator.comparing(Movie::getGenre);
+            }
+        } return Comparator.comparing(Movie::getLengthInMinutes);
+    }
+
+    public List<Movie> sortMovies1(List<Movie> movies, String primaryAttribute, String secondaryAttribute) {
+        Comparator<Movie> primaryComparator = getComparatorByAttribute(primaryAttribute);
+        Comparator<Movie> secondaryComparator = getComparatorByAttribute(secondaryAttribute);
+
+        return movies.stream()
+                .sorted(primaryComparator.thenComparing(secondaryComparator))
+                .collect(Collectors.toList());
+    }
+
 }
-
-
