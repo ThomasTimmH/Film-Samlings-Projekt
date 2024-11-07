@@ -43,7 +43,7 @@ public class UI {
                 case 7 -> controller.loadMovies();
                 case 8 -> {
                     System.out.println("How would you like to sort your movie list?");
-                    System.out.println("\nTitle|Director|Year|Genre|length in minutes|");
+                    System.out.println("\nTitle|Director|Year|Is in color|length in minutes|Genre|");
                     scan.nextLine();
                     String userSearch = scan.nextLine();
                     controller.sortMovies(userSearch);

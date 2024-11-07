@@ -139,32 +139,36 @@ public class MovieCollection {
         boolean running = true;
         String Choice = attribute.toLowerCase();
         while (running){
-            switch (Choice) {
-                case "title" -> {
-                    MovieList.sort(new MovieTitleComparator());
-                    running = false;
-                }
-                case "director" -> {
-                    MovieList.sort(new MovieDirectorComparator());
-                    running = false;
-                }
-                case "year" -> {
-                    MovieList.sort(new MovieYearCreatedComparator().reversed());
-                    running = false;
-                }
-                case "length in minutes" -> {
-                    MovieList.sort(new MovieLengthInMinutesComparator());
-                    running = false;
-                }
-                case "genre" -> {
-                    MovieList.sort(new MovieGenreComparator());
-                    running = false;
-                }
-                default -> {
-                    System.out.println("Enter a valid sorting criteria");
-                    Scanner scan = new Scanner(System.in);
-                    Choice = scan.nextLine();
-                }
+        switch (Choice) {
+            case "title" -> {
+                MovieList.sort(new MovieTitleComparator());
+                running = false;
+            }
+            case "director" -> {
+                MovieList.sort(new MovieDirectorComparator());
+                running = false;
+            }
+            case "year" -> {
+                MovieList.sort(new MovieYearCreatedComparator().reversed());
+                running = false;
+            }
+            case "is in color", "iic" -> {
+                MovieList.sort(new MovieIsInColorComparator());
+                running = false;
+            }
+            case "length in minutes" -> {
+                MovieList.sort(new MovieLengthInMinutesComparator());
+                running = false;
+            }
+            case "genre" -> {
+                MovieList.sort(new MovieGenreComparator());
+                running = false;
+            }
+            default -> {
+                System.out.println("Enter a valid sorting criteria");
+                Scanner scan = new Scanner(System.in);
+                Choice = scan.nextLine();
+            }
         }
         }
         return MovieList;
@@ -180,14 +184,17 @@ public class MovieCollection {
             case "director" -> {
                 return Comparator.comparing(Movie::getDirector);
             }
-            case "genre" -> {
-                return Comparator.comparing(Movie::getGenre);
-            }
             case "year" -> {
                 return Comparator.comparing(Movie::getYearCreated);
             }
+            case "is in color","iic" -> {
+                MovieList.sort(new MovieIsInColorComparator());
+            }
             case "length in minutes" -> {
                 return Comparator.comparing(Movie::getLengthInMinutes);
+            }
+            case "genre" -> {
+                return Comparator.comparing(Movie::getGenre);
             }
         } return Comparator.comparing(Movie::getLengthInMinutes);
     }
