@@ -189,6 +189,7 @@ public class MovieCollection {
     private Comparator<Movie> getMovieComparator(String attribute) {
         boolean running = true;
         String Choice = attribute.toLowerCase();
+        try{
         while (running) {
             switch (Choice) {
                 case "title":
@@ -208,7 +209,10 @@ public class MovieCollection {
                     Scanner scan = new Scanner(System.in);
                     Choice = scan.nextLine();
             }
-
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
         }
         return null;
     }
