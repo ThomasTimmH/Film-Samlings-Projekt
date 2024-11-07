@@ -147,6 +147,7 @@ public class MovieCollection {
             case "director" -> {
                 MovieList.sort(new MovieDirectorComparator());
                 running = false;
+
             }
             case "year" -> {
                 MovieList.sort(new MovieYearCreatedComparator().reversed());
