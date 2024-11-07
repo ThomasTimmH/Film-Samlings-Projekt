@@ -135,41 +135,46 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> sortMovies(String attribute) {
-        boolean running = true;
         String Choice = attribute.toLowerCase();
-        while (running) {
-            switch (Choice) {
-                case "title", "Title" -> {
-                    MovieList.sort(new MovieTitleComparator());
-                    running = false;
-                }
-                case "director", "Director" -> {
-                    MovieList.sort(new MovieDirectorComparator());
-                    running = false;
-                }
-                case "year", "Year" -> {
-                    MovieList.sort(new MovieYearCreatedComparator().reversed());
-                    running = false;
-                }
-                case "color", "Color" -> {
-                    MovieList.sort(new MovieIsInColorComparator());
-                    running = false;
-                }
-                case "length", "Length" -> {
-                    MovieList.sort(new MovieLengthInMinutesComparator());
-                    running = false;
-                }
-                case "genre", "Genre" -> {
-                    MovieList.sort(new MovieGenreComparator());
-                    running = false;
-                }
+        boolean running = true;
 
-                default -> {
-                    System.out.println("Enter a valid sorting criteria");
-                    Scanner scan = new Scanner(System.in);
-                    Choice = scan.nextLine();
+        try {
+            while (running) {
+                switch (Choice) {
+                    case "title", "Title" -> {
+                        MovieList.sort(new MovieTitleComparator());
+                        running = false;
+                    }
+                    case "director", "Director" -> {
+                        MovieList.sort(new MovieDirectorComparator());
+                        running = false;
+                    }
+                    case "year", "Year" -> {
+                        MovieList.sort(new MovieYearCreatedComparator().reversed());
+                        running = false;
+                    }
+                    case "color", "Color" -> {
+                        MovieList.sort(new MovieIsInColorComparator());
+                        running = false;
+                    }
+                    case "length", "Length" -> {
+                        MovieList.sort(new MovieLengthInMinutesComparator());
+                        running = false;
+                    }
+                    case "genre", "Genre" -> {
+                        MovieList.sort(new MovieGenreComparator());
+                        running = false;
+                    }
+                    default -> {
+                        System.out.println("Enter a valid sorting criteria");
+                        Scanner scan = new Scanner(System.in);
+                        Choice = scan.nextLine();
+                    }
                 }
             }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
         }
         return MovieList;
     }

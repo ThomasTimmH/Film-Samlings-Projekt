@@ -97,15 +97,16 @@ public class UI {
         String newDirector = scan.nextLine();
 
         System.out.println("Enter new creation year: ");
-
         int newYear = validateInt();
 
         System.out.println("Is the movie in color? (yes/no): ");
         scan.nextLine();
         boolean newIsInColor = validateBoolean();
 
+
         System.out.println("Enter new length in minutes: ");
         int newLength = validateInt();
+
 
         System.out.println("Enter new genre: ");
         scan.nextLine();
@@ -185,7 +186,6 @@ public class UI {
 
         System.out.println("Enter how long the movies is in minutes");
         int movieLength = validateInt();
-
 
         System.out.println("Enter the movie's genre: ");
         scan.nextLine();
