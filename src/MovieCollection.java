@@ -135,7 +135,6 @@ public class MovieCollection {
             System.out.println("An error has occured: " + e.getMessage());
         }
     }
-
     public ArrayList<Movie> sortMovies (String attribute) {
         String Choice = attribute.toLowerCase();
         switch (Choice) {
@@ -154,6 +153,10 @@ public class MovieCollection {
             case "genre" -> {
                 MovieList.sort(new MovieGenreComparator());
             }
+            case "color" -> {
+                MovieList.sort(new MovieGenreComparator());
+            }
+            default -> System.out.println("not a valid input, try again");
         }
         return MovieList;
     }
