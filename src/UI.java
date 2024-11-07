@@ -17,32 +17,8 @@ public class UI {
             int userResponse = validateInt();
             switch (userResponse) {
                 case 1 -> {
-                    System.out.println("Enter Title:");
-                    scan.nextLine();
-                    String userTitle = scan.nextLine();
-
-                    System.out.println("Enter a director");
-                    String userDirector = scan.nextLine();
-
-                    System.out.println("Enter the year the movie was made: ");
-                    int movieYear = validateInt();
-
-                    System.out.println("Is the movie colored?");
-                    scan.nextLine();
-                    boolean userColor = validateBoolean();
-
-                    System.out.println("Enter how long the movies is in minutes");
-                    int movieLength = validateInt();
-
-
-                    System.out.println("Enter the movie's genre: ");
-                    scan.nextLine();
-                    String movieGenre = scan.nextLine();
-
-                    Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
-
-                    controller.addMovie1(userMovie);
-                    System.out.println("Your movie " + userMovie.getTitle() + " has been added to the collection!");
+                    String userResponse1 = scan.nextLine();
+                    createMovie(userResponse1);
                 }
                 case 2 -> {
                     if (!controller.movieCollection.getMovieList().isEmpty()) {
@@ -78,7 +54,6 @@ public class UI {
                 case 10 -> running = false;
             }
         }
-
     }
 
     private void deleteMovie() {
@@ -171,6 +146,38 @@ public class UI {
                 scan.nextLine();
             }
         }
+    }
+
+
+
+
+    public String createMovie(String user){
+        System.out.println("Enter Title:");
+        String userTitle = scan.nextLine();
+
+        System.out.println("Enter a director");
+        String userDirector = scan.nextLine();
+
+        System.out.println("Enter the year the movie was made: ");
+        int movieYear = validateInt();
+
+        System.out.println("Is the movie colored?");
+        scan.nextLine();
+        boolean userColor = validateBoolean();
+
+        System.out.println("Enter how long the movies is in minutes");
+        int movieLength = validateInt();
+
+
+        System.out.println("Enter the movie's genre: ");
+        scan.nextLine();
+        String movieGenre = scan.nextLine();
+
+        Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
+
+        controller.addMovie1(userMovie);
+        System.out.println("Your movie " + userMovie.getTitle() + "has been added to the collection!");
+        return null;
     }
 }
 
