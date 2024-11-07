@@ -138,22 +138,22 @@ public class MovieCollection {
     public ArrayList<Movie> sortMovies(String attribute) {
         String Choice = attribute.toLowerCase();
         switch (Choice) {
-            case "title" -> {
+            case "title","Title" -> {
                 MovieList.sort(new MovieTitleComparator());
             }
-            case "director" -> {
+            case "director","Director" -> {
                 MovieList.sort(new MovieDirectorComparator());
             }
-            case "year" -> {
+            case "year","Year" -> {
                 MovieList.sort(new MovieYearCreatedComparator().reversed());
             }
-            case "is in color","iic" -> {
+            case "is in color","iic","Is in color" -> {
                 MovieList.sort(new MovieIsInColorComparator());
             }
-            case "length in minutes" -> {
+            case "length in minutes","Length in minutes","lim" -> {
                 MovieList.sort(new MovieLengthInMinutesComparator());
             }
-            case "genre" -> {
+            case "genre","Genre" -> {
                 MovieList.sort(new MovieGenreComparator());
             }
         }
