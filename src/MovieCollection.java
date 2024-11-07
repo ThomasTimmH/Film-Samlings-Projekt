@@ -147,17 +147,16 @@ public class MovieCollection {
             case "director","Director" -> {
                 MovieList.sort(new MovieDirectorComparator());
                 running = false;
-
             }
             case "year","Year" -> {
                 MovieList.sort(new MovieYearCreatedComparator().reversed());
                 running = false;
             }
-            case "is in color","iic","Is in color" -> {
+            case "color","Color" -> {
                 MovieList.sort(new MovieIsInColorComparator());
                 running = false;
             }
-            case "length in minutes","Length in minutes","lim" -> {
+            case "length","Length" -> {
                 MovieList.sort(new MovieLengthInMinutesComparator());
                 running = false;
             }
@@ -165,9 +164,7 @@ public class MovieCollection {
                 MovieList.sort(new MovieGenreComparator());
                 running = false;
             }
-            case "color" -> {
-                MovieList.sort(new MovieIsInColorComparator());
-            }
+
             default -> {
                 System.out.println("Enter a valid sorting criteria");
                 Scanner scan = new Scanner(System.in);
