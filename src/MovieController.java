@@ -35,9 +35,11 @@ public class MovieController {
         movieCollection.sortMovies(userAtr);
     }
 
-    public void sortMovies1 (String userAtr){
-        movieCollection.getComparatorByAttribute(userAtr);
+    public void sortMoviesByTwoAttributes(String primaryAttribute, String secondaryAttribute) {
+        movieCollection.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
     }
+
+
 
 }
 

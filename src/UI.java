@@ -50,10 +50,26 @@ public class UI {
 
                     controller.showAllMovies();
                 }
-                // case 9 - > kode til sortering primary secondary
+                case 9 -> {
+                    System.out.println("How would you like to sort your movie list?");
+                    System.out.println("\nAvailable attributes: Title, Director, Year, Color, Length, Genre");
+                    System.out.println("Enter the first sorting attribute:");
+                    String primaryAttribute = validateAttribute(scan.nextLine());
+                    System.out.println("Enter the second sorting attribute:");
+                    String secondaryAttribute = validateAttribute(scan.nextLine());
+                    controller.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
+                    controller.showAllMovies();
+                }
                 case 10 -> running = false;
             }
         }
+    }
+
+    private String validateAttribute(String attribute) {
+        while (attribute.trim().isEmpty()) {
+            attribute = scan.nextLine();
+        }
+        return attribute.trim();
     }
 
     private void deleteMovie() {
