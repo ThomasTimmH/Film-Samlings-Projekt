@@ -154,7 +154,7 @@ public class MovieCollection {
                 MovieList.sort(new MovieGenreComparator());
             }
             case "color" -> {
-                MovieList.sort(new MovieGenreComparator());
+                MovieList.sort(new MovieIsInColorComparator());
             }
             default -> System.out.println("not a valid input, try again");
         }
