@@ -147,6 +147,9 @@ public class MovieCollection {
             case "year" -> {
                 MovieList.sort(new MovieYearCreatedComparator().reversed());
             }
+            case "is in color","iic" -> {
+                MovieList.sort(new MovieIsInColorComparator());
+            }
             case "length in minutes" -> {
                 MovieList.sort(new MovieLengthInMinutesComparator());
             }
@@ -167,14 +170,17 @@ public class MovieCollection {
             case "director" -> {
                 return Comparator.comparing(Movie::getDirector);
             }
-            case "genre" -> {
-                return Comparator.comparing(Movie::getGenre);
-            }
             case "year" -> {
                 return Comparator.comparing(Movie::getYearCreated);
             }
+            case "is in color","iic" -> {
+                MovieList.sort(new MovieIsInColorComparator());
+            }
             case "length in minutes" -> {
                 return Comparator.comparing(Movie::getLengthInMinutes);
+            }
+            case "genre" -> {
+                return Comparator.comparing(Movie::getGenre);
             }
         } return Comparator.comparing(Movie::getLengthInMinutes);
     }
