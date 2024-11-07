@@ -106,6 +106,7 @@ public class UI {
 
     private void displayMenu() {
         System.out.println();
+        System.out.println(newLine());
         System.out.println("1. Create movie entry");
         System.out.println("2. See movie list");
         System.out.println("3. Search movie, by title");
@@ -116,6 +117,7 @@ public class UI {
         System.out.println("8. Sort Movies");
         System.out.println("9. Sort Movies By Primary And Secondary Search Criteria");
         System.out.println("10. Exit");
+        System.out.println(newLine());
     }
 
     private int validateInt() {
@@ -178,6 +180,11 @@ public class UI {
         controller.addMovie1(userMovie);
         System.out.println("Your movie " + userMovie.getTitle() + "has been added to the collection!");
         return null;
+    }
+
+
+    public String newLine(){
+        return "------------------------------------------------------------";
     }
 }
 
