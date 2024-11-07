@@ -3,9 +3,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MovieCollection {
     private ArrayList<Movie> MovieList = new ArrayList();
@@ -136,7 +135,7 @@ public class MovieCollection {
         }
     }
 
-    public ArrayList<Movie> sortMovies (String attribute) {
+    public ArrayList<Movie> sortMovies(String attribute) {
         String Choice = attribute.toLowerCase();
         switch (Choice) {
             case "title" -> {
@@ -157,6 +156,36 @@ public class MovieCollection {
         }
         return MovieList;
     }
+
+    public Comparator<Movie> getComparatorByAttribute(String attribute) {
+        String choice = attribute.toLowerCase();
+
+        switch (choice.toLowerCase()) {
+            case "title" -> {
+                return Comparator.comparing(Movie::getTitle);
+            }
+            case "director" -> {
+                return Comparator.comparing(Movie::getDirector);
+            }
+            case "genre" -> {
+                return Comparator.comparing(Movie::getGenre);
+            }
+            case "year" -> {
+                return Comparator.comparing(Movie::getYearCreated);
+            }
+            case "length in minutes" -> {
+                return Comparator.comparing(Movie::getLengthInMinutes);
+            }
+        } return Comparator.comparing(Movie::getLengthInMinutes);
+    }
+
+    public List<Movie> sortMovies1(List<Movie> movies, String primaryAttribute, String secondaryAttribute) {
+        Comparator<Movie> primaryComparator = getComparatorByAttribute(primaryAttribute);
+        Comparator<Movie> secondaryComparator = getComparatorByAttribute(secondaryAttribute);
+
+        return movies.stream()
+                .sorted(primaryComparator.thenComparing(secondaryComparator))
+                .collect(Collectors.toList());
+    }
+
 }
-
-
