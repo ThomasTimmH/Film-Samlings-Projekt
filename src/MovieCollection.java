@@ -136,23 +136,36 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> sortMovies(String attribute) {
+        boolean running = true;
         String Choice = attribute.toLowerCase();
-        switch (Choice) {
-            case "title" -> {
-                MovieList.sort(new MovieTitleComparator());
-            }
-            case "director" -> {
-                MovieList.sort(new MovieDirectorComparator());
-            }
-            case "year" -> {
-                MovieList.sort(new MovieYearCreatedComparator().reversed());
-            }
-            case "length in minutes" -> {
-                MovieList.sort(new MovieLengthInMinutesComparator());
-            }
-            case "genre" -> {
-                MovieList.sort(new MovieGenreComparator());
-            }
+        while (running){
+            switch (Choice) {
+                case "title" -> {
+                    MovieList.sort(new MovieTitleComparator());
+                    running = false;
+                }
+                case "director" -> {
+                    MovieList.sort(new MovieDirectorComparator());
+                    running = false;
+                }
+                case "year" -> {
+                    MovieList.sort(new MovieYearCreatedComparator().reversed());
+                    running = false;
+                }
+                case "length in minutes" -> {
+                    MovieList.sort(new MovieLengthInMinutesComparator());
+                    running = false;
+                }
+                case "genre" -> {
+                    MovieList.sort(new MovieGenreComparator());
+                    running = false;
+                }
+                default -> {
+                    System.out.println("Enter a valid sorting criteria");
+                    Scanner scan = new Scanner(System.in);
+                    Choice = scan.nextLine();
+                }
+        }
         }
         return MovieList;
     }
