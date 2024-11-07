@@ -74,7 +74,8 @@ public class UI {
 
                     controller.showAllMovies();
                 }
-                case 9 -> running = false;
+                // case 9 - > kode til sortering primary secondary
+                case 10 -> running = false;
             }
         }
 
@@ -138,7 +139,8 @@ public class UI {
         System.out.println("6. Save movies");
         System.out.println("7. Load movies");
         System.out.println("8. Sort Movies");
-        System.out.println("9. Exit");
+        System.out.println("9. Sort Movies By Primary And Secondary Search Criteria");
+        System.out.println("10. Exit");
     }
 
     private int validateInt() {
@@ -151,7 +153,6 @@ public class UI {
             }
         }
     }
-
 
     private boolean validateBoolean(){
         while (true){
@@ -170,14 +171,6 @@ public class UI {
                 scan.nextLine();
             }
         }
-//        public void sortMovies (){
-//            System.out.println();
-//            System.out.println();
-//            System.out.println();
-//
-//            String scan = scanner.next();
-//            switch (scan)
-//        }
     }
 }
 
