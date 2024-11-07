@@ -47,7 +47,6 @@ public class MovieCollection {
         }
     }
 
-
     public int getMovieNumber() {
         int numberOfMovies = 0;
         for (Movie movie : MovieList) {
@@ -95,6 +94,7 @@ public class MovieCollection {
     }
 
 
+    // Lav om til return type String
     public void saveMoviesFile() {
         if (!isModified) {
             System.out.println("You have not made any changes to your movie list - file has not been saved");
@@ -137,7 +137,7 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> sortMovies (String attribute) {
-        String Choice = attribute;
+        String Choice = attribute.toLowerCase();
         switch (Choice) {
             case "title" -> {
                 MovieList.sort(new MovieTitleComparator());
@@ -145,10 +145,10 @@ public class MovieCollection {
             case "director" -> {
                 MovieList.sort(new MovieDirectorComparator());
             }
-            case "year created" -> {
-                MovieList.sort(new MovieYearCreatedComparator());
+            case "year" -> {
+                MovieList.sort(new MovieYearCreatedComparator().reversed());
             }
-            case "lengthInMinutes" -> {
+            case "length in minutes" -> {
                 MovieList.sort(new MovieLengthInMinutesComparator());
             }
             case "genre" -> {

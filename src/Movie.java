@@ -53,7 +53,6 @@ public class Movie {
         this.title = title;
     }
 
-
     public void setDirector(String director){
         this.director = director;
     }
@@ -75,7 +74,6 @@ public class Movie {
     public void setLengthInMinutes(int lengthInMinutes){
         this.lengthInMinutes = lengthInMinutes;
     }
-
 
     public String toString(){
         return "Movie title: " + title + " \nDirector: " + director + " \nYear created: " + yearCreated + " \nIs in color: " + editColor(isInColor) + "\nLength in minutes: " + lengthInMinutes + "\nGenre: " + genre + "\n\n";

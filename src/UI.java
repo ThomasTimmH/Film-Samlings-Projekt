@@ -65,7 +65,16 @@ public class UI {
                 case 5 -> deleteMovie();
                 case 6 -> controller.saveMovies();
                 case 7 -> controller.loadMovies();
-                case 8 -> running = false;
+                case 8 -> {
+                    System.out.println("How would you like to sort your movie list?");
+                    System.out.println("\nTitle|Director|Year|Genre|length in minutes|");
+                    scan.nextLine();
+                    String userSearch = scan.nextLine();
+                    controller.sortMovies(userSearch);
+
+                    controller.showAllMovies();
+                }
+                case 9 -> running = false;
             }
         }
 
@@ -128,7 +137,8 @@ public class UI {
         System.out.println("5. Delete movie from list");
         System.out.println("6. Save movies");
         System.out.println("7. Load movies");
-        System.out.println("8. Exit");
+        System.out.println("8. Sort Movies");
+        System.out.println("9. Exit");
     }
 
     private int validateInt() {
@@ -140,8 +150,8 @@ public class UI {
                 scan.nextLine(); // Remove the next line
             }
         }
-
     }
+
 
     private boolean validateBoolean(){
         while (true){

@@ -30,6 +30,10 @@ public class MovieController {
     public void loadMovies(){
         movieCollection.loadMoviesFile();
     }
+
+    public void sortMovies(String userAtr){
+        movieCollection.sortMovies(userAtr);
+    }
 }
 
 
