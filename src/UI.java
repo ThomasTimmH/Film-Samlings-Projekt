@@ -54,10 +54,12 @@ public class UI {
                     System.out.println("How would you like to sort your movie list?");
                     System.out.println("\nAvailable attributes: Title, Director, Year, Color, Length, Genre");
                     String primaryAttribute = "";
+                    System.out.println("Please enter a primary-sorting-attribute");
                     primaryAttribute = validateAttributeFirst();
-                    System.out.println("Please enter a valid secondary-sorting-attribute");
+                    System.out.println("Please enter a secondary-sorting-attribute");
                     String secondaryAttribute = validateAttributeSecond();
                     controller.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
+                    System.out.println("Sucessfully sorted movies by primary attribute: '" + primaryAttribute + "' and secondary attribute: '" + secondaryAttribute + "'");
                     controller.showAllMovies();
                 }
                 case 10 -> running = false;
@@ -178,12 +180,13 @@ public class UI {
         while (running) {
             if (!userAttribute.equalsIgnoreCase("genre") && !userAttribute.equalsIgnoreCase("director") && !userAttribute.equalsIgnoreCase("title") && !userAttribute.equalsIgnoreCase("year") &&
                     !userAttribute.equalsIgnoreCase("length")) {
-                System.out.println("Please enter a valid primary-sorting-criteria");
+                System.out.println("Please enter a valid primary-sorting-attribute");
                 userAttribute = scan.nextLine();
             }else {
                 return userAttribute;
             }
         }
+        System.out.println("Primary criteria recieved");
         return userAttribute;
     }
 
@@ -194,12 +197,13 @@ public class UI {
         while (running) {
             if (!userAttribute.equalsIgnoreCase("genre") && !userAttribute.equalsIgnoreCase("director") && !userAttribute.equalsIgnoreCase("title") && !userAttribute.equalsIgnoreCase("year") &&
                     !userAttribute.equalsIgnoreCase("length")) {
-                System.out.println("Please enter a valid secondary-sorting-criteria");
+                System.out.println("Please enter a valid secondary-sorting-attribute");
                 userAttribute = scan.nextLine();
             }else {
                 return userAttribute;
             }
         }
+        System.out.println("Secondary criteria recieved");
         return userAttribute;
     }
 
