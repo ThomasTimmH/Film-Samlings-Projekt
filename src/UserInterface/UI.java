@@ -1,6 +1,7 @@
 package UserInterface;
 
 import Modles.Movie;
+import Modles.MovieCollection;
 import Modles.MovieController;
 
 import java.util.InputMismatchException;
@@ -45,8 +46,8 @@ public class UI {
                 }
                 case 4 -> editMovie(); // Redigerer en film
                 case 5 -> deleteMovie(); // Sletter en film
-                case 6 -> controller.saveMovies(); // Gemmer filmene til en fil
-                case 7 -> controller.loadMovies(); // Indlæser filmene fra en fil
+                case 6 -> controller.saveMovies1(); // Gemmer filmene til en fil
+                case 7 -> controller.loadFromFile1(); // Indlæser filmene fra en fil
                 case 8 -> {
                     System.out.println("How would you like to sort your movie list?");
                     System.out.println("\nTitle|Director|Year|Color|Length|Genre|");

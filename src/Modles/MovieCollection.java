@@ -36,6 +36,10 @@ public class MovieCollection {
         return null;
     }
 
+    public void clearMovieList(){
+        MovieList.clear();
+    }
+
     // Søger efter alle film, der matcher en given titel og udskriver dem
     public void searchMovies(String Search) {
         Search = Search.toLowerCase();

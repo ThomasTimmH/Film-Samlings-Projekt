@@ -79,6 +79,10 @@ public class Movie {
     public void setLengthInMinutes(int lengthInMinutes){
         this.lengthInMinutes = lengthInMinutes;  // Ændrer filmens længde i minutter
     }
+    public String toCSVStyle() {
+        return "\n" + title + "," + director + "," + yearCreated + "," + isInColor + "," + lengthInMinutes + "," + genre;
+    }
+
 
     // Returnerer en tekstbeskrivelse af filmen, som kan bruges til at vise filmens detaljer
     public String toString(){

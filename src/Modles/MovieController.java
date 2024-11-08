@@ -1,9 +1,13 @@
 package Modles;
 
+import DataScourse.FileHandler;
+
 import java.util.ArrayList;
 
 public class MovieController {
     MovieCollection movieCollection = new MovieCollection(); // Instans af MovieCollection til at administrere filmene
+
+    private FileHandler fh = new FileHandler();
 
     // Viser alle film i samlingen
     public void showAllMovies() {
@@ -31,14 +35,14 @@ public class MovieController {
     }
 
     // Gemmer filmlisten til en fil
-    public void saveMovies() {
+   /* public void saveMovies() {
         movieCollection.saveMoviesFile();
     }
 
     // Indlæser filmlisten fra en fil
     public void loadMovies() {
         movieCollection.loadMoviesFile();
-    }
+    }*/
 
     // Sorterer film baseret på et enkelt kriterium valgt af brugeren
     public void sortMovies(String userAtr) {
@@ -49,10 +53,21 @@ public class MovieController {
     public void sortMoviesByTwoAttributes(String primaryAttribute, String secondaryAttribute) {
         movieCollection.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
     }
-    public ArrayList<Movie> getMovieList(){
+
+    public ArrayList<Movie> getMovieList() {
         return getMovieList();
     }
 
+    public ArrayList<Movie> loadFromFile1() {
+        return fh.loadFromFile();
+
+    }
+
+    public void saveMovies1() {
+        ArrayList<Movie> newMovies = getMovieList(); // Get movies from the current session
+        fh.saveToFile(newMovies);
+        movieCollection.clearMovieList();
+    }
 
 
 }
