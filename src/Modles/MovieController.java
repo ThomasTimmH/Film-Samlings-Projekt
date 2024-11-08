@@ -1,3 +1,5 @@
+package Modles;
+
 import java.util.ArrayList;
 
 public class MovieController {
@@ -37,6 +39,9 @@ public class MovieController {
 
     public void sortMoviesByTwoAttributes(String primaryAttribute, String secondaryAttribute) {
         movieCollection.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
+    }
+    public ArrayList<Movie> getMovieList(){
+        return getMovieList();
     }
 
 

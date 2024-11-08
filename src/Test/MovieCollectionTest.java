@@ -1,7 +1,10 @@
+package Test;
+
+import Modles.Movie;
+import Modles.MovieCollection;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -83,7 +86,7 @@ class MovieCollectionTest {
         String actualResult = movie3.getTitle();
         String expectedResult = "Hunger Games";
 
-        // Assert - Vi gemmer search resultatet i en Movie type og sætter den op mod en "notNull"
+        // Assert - Vi gemmer search resultatet i en Modles.Movie type og sætter den op mod en "notNull"
         // Derefter laver vi en AssertEquals med en direkte string titel mod den fundnens film titel**VIGTIGT
         // Gamle kode = assertEquals(expectedResult, actualResult);
         // Gamle kode gøre ikke hvad vi forventer Issue: searchMovie("Hunger Games") doesn’t store or check its result, so the test would pass even if searchMovie is broken or unimplemented.

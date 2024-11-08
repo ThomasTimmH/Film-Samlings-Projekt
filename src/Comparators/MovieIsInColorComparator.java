@@ -1,3 +1,7 @@
+package Comparators;
+
+import Modles.Movie;
+
 import java.util.Comparator;
 
 public class MovieIsInColorComparator implements Comparator<Movie> {

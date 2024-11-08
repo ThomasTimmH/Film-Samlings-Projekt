@@ -1,3 +1,8 @@
+package UserInterface;
+
+import Modles.Movie;
+import Modles.MovieController;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -21,10 +26,10 @@ public class UI {
                     createMovie(userResponse1);
                 }
                 case 2 -> {
-                    if (!controller.movieCollection.getMovieList().isEmpty()) {
+                    if (!controller.getMovieList().isEmpty()) {
                         controller.showAllMovies();
                     } else {
-                        System.out.println("Movie list is empty");
+                        System.out.println("Modles.Movie list is empty");
                     }
                 }
                 case 3 -> {
@@ -79,9 +84,9 @@ public class UI {
 
         boolean success = controller.deleteMovie(titleToDelete);
         if (success) {
-            System.out.println("Movie '" + titleToDelete + "' has been deleted successfully.");
+            System.out.println("Modles.Movie '" + titleToDelete + "' has been deleted successfully.");
         } else {
-            System.out.println("Movie not found.");
+            System.out.println("Modles.Movie not found.");
         }
     }
 
@@ -114,9 +119,9 @@ public class UI {
         // Redigerer filmen via controlleren
         boolean success = controller.editMovie(searchTitle, newTitle, newDirector, newYear, newLength, newIsInColor, newGenre);
         if (success) {
-            System.out.println("Movie updated successfully.");
+            System.out.println("Modles.Movie updated successfully.");
         } else {
-            System.out.println("Movie not found.");
+            System.out.println("Modles.Movie not found.");
         }
     }
 

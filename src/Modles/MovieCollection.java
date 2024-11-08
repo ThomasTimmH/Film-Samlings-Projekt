@@ -1,3 +1,6 @@
+package Modles;
+import Comparators.*;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -178,6 +181,7 @@ public class MovieCollection {
         Comparator<Movie> primaryComparator = getMovieComparator(primaryAttribute);
         Comparator<Movie> secondaryComparator = getMovieComparator(secondaryAttribute);
 
+       
         MovieList.sort(primaryComparator.thenComparing(secondaryComparator));
     }
 

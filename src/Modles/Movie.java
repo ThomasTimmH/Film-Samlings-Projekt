@@ -1,3 +1,5 @@
+package Modles;
+
 public class Movie {
     private String title;
     private String director;
@@ -76,6 +78,6 @@ public class Movie {
     }
 
     public String toString(){
-        return "Movie title: " + title + " \nDirector: " + director + " \nYear created: " + yearCreated + " \nIs in color: " + editColor(isInColor) + "\nLength in minutes: " + lengthInMinutes + "\nGenre: " + genre + "\n\n";
+        return "Modles.Movie title: " + title + " \nDirector: " + director + " \nYear created: " + yearCreated + " \nIs in color: " + editColor(isInColor) + "\nLength in minutes: " + lengthInMinutes + "\nGenre: " + genre + "\n\n";
     }
 }
