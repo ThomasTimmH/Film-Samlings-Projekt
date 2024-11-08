@@ -53,10 +53,10 @@ public class UI {
                 case 9 -> {
                     System.out.println("How would you like to sort your movie list?");
                     System.out.println("\nAvailable attributes: Title, Director, Year, Color, Length, Genre");
-                    System.out.println("Enter the first sorting attribute:");
-                    String primaryAttribute = validateAttribute(scan.nextLine());
-                    System.out.println("Enter the second sorting attribute:");
-                    String secondaryAttribute = validateAttribute(scan.nextLine());
+                    String primaryAttribute = "";
+                    primaryAttribute = validateAttributeFirst();
+                    System.out.println("Please enter a valid secondary-sorting-attribute");
+                    String secondaryAttribute = validateAttributeSecond();
                     controller.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
                     controller.showAllMovies();
                 }
@@ -65,12 +65,15 @@ public class UI {
         }
     }
 
+    /* skal ikke bruges
     private String validateAttribute(String attribute) {
         while (attribute.trim().isEmpty()) {
-            attribute = scan.nextLine();
+                 attribute = scan.nextLine();
         }
         return attribute.trim();
     }
+
+     */
 
     private void deleteMovie() {
         System.out.println("Enter the title of the movie you want to delete:");
@@ -102,7 +105,6 @@ public class UI {
         System.out.println("Is the movie in color? (yes/no): ");
         scan.nextLine();
         boolean newIsInColor = validateBoolean();
-
 
         System.out.println("Enter new length in minutes: ");
         int newLength = validateInt();
@@ -165,6 +167,40 @@ public class UI {
                 scan.nextLine();
             }
         }
+    }
+
+
+    // Validerer første primary attribute til sorting
+    private String validateAttributeFirst() {
+        scan.nextLine(); // next line bug
+        String userAttribute = scan.nextLine();
+        boolean running = true;
+        while (running) {
+            if (!userAttribute.equalsIgnoreCase("genre") && !userAttribute.equalsIgnoreCase("director") && !userAttribute.equalsIgnoreCase("title") && !userAttribute.equalsIgnoreCase("year") &&
+                    !userAttribute.equalsIgnoreCase("length")) {
+                System.out.println("Please enter a valid primary-sorting-criteria");
+                userAttribute = scan.nextLine();
+            }else {
+                return userAttribute;
+            }
+        }
+        return userAttribute;
+    }
+
+    // Validerer første secondary attribute til sorting
+    private String validateAttributeSecond() {
+        String userAttribute = scan.nextLine();
+        boolean running = true;
+        while (running) {
+            if (!userAttribute.equalsIgnoreCase("genre") && !userAttribute.equalsIgnoreCase("director") && !userAttribute.equalsIgnoreCase("title") && !userAttribute.equalsIgnoreCase("year") &&
+                    !userAttribute.equalsIgnoreCase("length")) {
+                System.out.println("Please enter a valid secondary-sorting-criteria");
+                userAttribute = scan.nextLine();
+            }else {
+                return userAttribute;
+            }
+        }
+        return userAttribute;
     }
 
 

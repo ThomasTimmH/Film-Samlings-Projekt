@@ -180,8 +180,9 @@ public class MovieCollection {
     }
 
     public void sortMoviesByTwoAttributes(String primaryAttribute, String secondaryAttribute) {
-        Comparator<Movie> primaryComparator = getMovieComparator(primaryAttribute);
-        Comparator<Movie> secondaryComparator = getMovieComparator(secondaryAttribute);
+            Comparator<Movie> primaryComparator = getMovieComparator(primaryAttribute);
+            Comparator<Movie> secondaryComparator = getMovieComparator(secondaryAttribute);
+
 
         MovieList.sort(primaryComparator.thenComparing(secondaryComparator));
     }
