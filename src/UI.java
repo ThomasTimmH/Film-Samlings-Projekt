@@ -47,7 +47,6 @@ public class UI {
                     scan.nextLine();
                     String userSearch = scan.nextLine();
                     controller.sortMovies(userSearch);
-
                     controller.showAllMovies();
                 }
                 case 9 -> {
@@ -67,16 +66,6 @@ public class UI {
         }
     }
 
-    /* skal ikke bruges
-    private String validateAttribute(String attribute) {
-        while (attribute.trim().isEmpty()) {
-                 attribute = scan.nextLine();
-        }
-        return attribute.trim();
-    }
-
-     */
-
     private void deleteMovie() {
         System.out.println("Enter the title of the movie you want to delete:");
         scan.nextLine();
@@ -94,6 +83,7 @@ public class UI {
         System.out.println("Enter the title of the movie you want to edit");
         scan.nextLine();
         String searchTitle = scan.nextLine();
+
 
         System.out.println("Enter new title: ");
         String newTitle = scan.nextLine();
@@ -133,9 +123,9 @@ public class UI {
         System.out.println("3. Search movie, by title");
         System.out.println("4. Edit movie by searching after title");
         System.out.println("5. Delete movie from list");
-        System.out.println("6. Save movies");
-        System.out.println("7. Load movies");
-        System.out.println("8. Sort Movies");
+        System.out.println("6. Save movies on file");
+        System.out.println("7. Load movies from file");
+        System.out.println("8. Sort Movies by single attribute");
         System.out.println("9. Sort Movies By Primary And Secondary Search Criteria");
         System.out.println("10. Exit");
         System.out.println(newLine());

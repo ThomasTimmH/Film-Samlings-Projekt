@@ -30,6 +30,7 @@ public class MovieCollection {
         return null;
     }
 
+    // Vi vil gerne have den returnerer Movie **bedre praksis **vi kan fixe mange fejl hvis den returnerer film f.eks. editMovie
     public void searchMovies(String Search) {
         Search = Search.toLowerCase();
         boolean found = false;
@@ -135,12 +136,12 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> sortMovies(String attribute) {
-        String Choice = attribute.toLowerCase();
+        String userChoice = attribute.toLowerCase();
         boolean running = true;
 
         try {
             while (running) {
-                switch (Choice) {
+                switch (userChoice) {
                     case "title", "Title" -> {
                         MovieList.sort(new MovieTitleComparator());
                         running = false;
@@ -168,7 +169,7 @@ public class MovieCollection {
                     default -> {
                         System.out.println("Enter a valid sorting criteria");
                         Scanner scan = new Scanner(System.in);
-                        Choice = scan.nextLine();
+                        userChoice = scan.nextLine();
                     }
                 }
             }
@@ -176,6 +177,7 @@ public class MovieCollection {
         catch(Exception e){
             System.out.println(e.getMessage());
         }
+        System.out.println("Movies successfully sorted by " + userChoice);
         return MovieList;
     }
 
