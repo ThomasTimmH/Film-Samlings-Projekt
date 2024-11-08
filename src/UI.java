@@ -3,26 +3,26 @@ import java.util.Scanner;
 
 public class UI {
 
-    Scanner scan = new Scanner(System.in);
-    MovieController controller = new MovieController();
+    Scanner scan = new Scanner(System.in); // Scanner til brugerinput
+    MovieController controller = new MovieController(); // Controller til at håndtere filmoperationer
 
-
+    // Startmetode, der kører brugergrænsefladen i en løkke
     public void Start() {
 
         System.out.println("Welcome to your movie collection!");
 
-        boolean running = true;
+        boolean running = true; // Flag til at styre programmet
         while (running) {
-            displayMenu();
-            int userResponse = validateInt();
+            displayMenu(); // Viser menuen for brugeren
+            int userResponse = validateInt(); // Validerer brugerens valg som heltal
             switch (userResponse) {
                 case 1 -> {
                     String userResponse1 = scan.nextLine();
-                    createMovie(userResponse1);
+                    createMovie(userResponse1); // Opretter en ny film
                 }
                 case 2 -> {
                     if (!controller.movieCollection.getMovieList().isEmpty()) {
-                        controller.showAllMovies();
+                        controller.showAllMovies(); // Viser alle film, hvis listen ikke er tom
                     } else {
                         System.out.println("Movie list is empty");
                     }
@@ -32,39 +32,39 @@ public class UI {
                     scan.nextLine();
                     String titleSearch = scan.nextLine();
                     if (!titleSearch.isEmpty()) {
-                        controller.searchMovie1(titleSearch);
+                        controller.searchMovie1(titleSearch); // Søger efter en film baseret på titel
                     } else {
                         System.out.println("You have to write at least one letter to search");
                     }
                 }
-                case 4 -> editMovie();
-                case 5 -> deleteMovie();
-                case 6 -> controller.saveMovies();
-                case 7 -> controller.loadMovies();
+                case 4 -> editMovie(); // Redigerer en film
+                case 5 -> deleteMovie(); // Sletter en film
+                case 6 -> controller.saveMovies(); // Gemmer filmene til en fil
+                case 7 -> controller.loadMovies(); // Indlæser filmene fra en fil
                 case 8 -> {
                     System.out.println("How would you like to sort your movie list?");
                     System.out.println("\nTitle|Director|Year|Color|Length|Genre|");
                     scan.nextLine();
                     String userSearch = scan.nextLine();
-                    controller.sortMovies(userSearch);
-
+                    controller.sortMovies(userSearch); // Sorterer film efter et enkelt kriterium
                     controller.showAllMovies();
                 }
                 case 9 -> {
                     System.out.println("How would you like to sort your movie list?");
                     System.out.println("\nAvailable attributes: Title, Director, Year, Color, Length, Genre");
                     System.out.println("Enter the first sorting attribute:");
-                    String primaryAttribute = validateAttribute(scan.nextLine());
+                    String primaryAttribute = validateAttribute(scan.nextLine()); // Validerer første attribut
                     System.out.println("Enter the second sorting attribute:");
-                    String secondaryAttribute = validateAttribute(scan.nextLine());
-                    controller.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute);
+                    String secondaryAttribute = validateAttribute(scan.nextLine()); // Validerer anden attribut
+                    controller.sortMoviesByTwoAttributes(primaryAttribute, secondaryAttribute); // Sorterer efter to attributter
                     controller.showAllMovies();
                 }
-                case 10 -> running = false;
+                case 10 -> running = false; // Stopper programmet
             }
         }
     }
 
+    // Validerer, at en attribut ikke er tom
     private String validateAttribute(String attribute) {
         while (attribute.trim().isEmpty()) {
             attribute = scan.nextLine();
@@ -72,12 +72,13 @@ public class UI {
         return attribute.trim();
     }
 
+    // Metode til sletning af en film baseret på titel
     private void deleteMovie() {
         System.out.println("Enter the title of the movie you want to delete:");
         scan.nextLine();
         String titleToDelete = scan.nextLine();
 
-        boolean success = controller.deleteMovie(titleToDelete);
+        boolean success = controller.deleteMovie(titleToDelete); // Sletter filmen gennem controlleren
         if (success) {
             System.out.println("Movie '" + titleToDelete + "' has been deleted successfully.");
         } else {
@@ -85,6 +86,7 @@ public class UI {
         }
     }
 
+    // Metode til redigering af en film baseret på titel
     private void editMovie() {
         System.out.println("Enter the title of the movie you want to edit");
         scan.nextLine();
@@ -97,15 +99,14 @@ public class UI {
         String newDirector = scan.nextLine();
 
         System.out.println("Enter new creation year: ");
-
-        int newYear = validateInt();
+        int newYear = validateInt(); // Validerer, at årstallet er et gyldigt heltal
 
         System.out.println("Is the movie in color? (yes/no): ");
         scan.nextLine();
-        boolean newIsInColor = validateBoolean();
+        boolean newIsInColor = validateBoolean(); // Validerer, at brugeren har svaret med ja/nej
 
         System.out.println("Enter new length in minutes: ");
-        int newLength = validateInt();
+        int newLength = validateInt(); // Validerer længde i minutter
 
         System.out.println("Enter new genre: ");
         scan.nextLine();
@@ -120,6 +121,7 @@ public class UI {
         }
     }
 
+    // Viser menuen med valgmuligheder
     private void displayMenu() {
         System.out.println();
         System.out.println(newLine());
@@ -136,40 +138,39 @@ public class UI {
         System.out.println(newLine());
     }
 
+    // Validerer, at input er et heltal
     private int validateInt() {
         while (true) {
             try {
                 return scan.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid value.");
-                scan.nextLine(); // Remove the next line
+                scan.nextLine(); // Fjerner den ugyldige linje
             }
         }
     }
 
-    private boolean validateBoolean(){
-        while (true){
-            try{
+    // Validerer, at input er ja/nej, og returnerer et boolean-resultat
+    private boolean validateBoolean() {
+        while (true) {
+            try {
                 String userResponse = scan.nextLine();
-                if (userResponse.equalsIgnoreCase("yes")){
+                if (userResponse.equalsIgnoreCase("yes")) {
                     return true;
-                } else if (userResponse.equalsIgnoreCase("no")){
+                } else if (userResponse.equalsIgnoreCase("no")) {
                     return false;
                 } else {
                     System.out.println("Please enter yes/no");
                 }
-            }
-            catch (Exception e){
-                System.out.println("An error has occured: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("An error has occurred: " + e.getMessage());
                 scan.nextLine();
             }
         }
     }
 
-
-
-
-    public String createMovie(String user){
+    // Metode til at oprette en ny film
+    public String createMovie(String user) {
         System.out.println("Enter Title:");
         String userTitle = scan.nextLine();
 
@@ -183,31 +184,22 @@ public class UI {
         scan.nextLine();
         boolean userColor = validateBoolean();
 
-        System.out.println("Enter how long the movies is in minutes");
+        System.out.println("Enter how long the movie is in minutes");
         int movieLength = validateInt();
-
 
         System.out.println("Enter the movie's genre: ");
         scan.nextLine();
         String movieGenre = scan.nextLine();
 
-        Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre);
+        Movie userMovie = new Movie(userTitle, userDirector, movieYear, userColor, movieLength, movieGenre); // Opretter nyt Movie-objekt
 
-        controller.addMovie1(userMovie);
-        System.out.println("Your movie " + userMovie.getTitle() + "has been added to the collection!");
+        controller.addMovie1(userMovie); // Tilføjer filmen til samlingen
+        System.out.println("Your movie " + userMovie.getTitle() + " has been added to the collection!");
         return null;
     }
 
-
-    public String newLine(){
+    // Returnerer en adskillelseslinje til konsollen
+    public String newLine() {
         return "------------------------------------------------------------";
     }
 }
-
-
-
-
-
-
-
-

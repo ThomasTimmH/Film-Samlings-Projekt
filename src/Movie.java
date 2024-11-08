@@ -1,4 +1,5 @@
 public class Movie {
+    // Felter, der indeholder information om filmen
     private String title;
     private String director;
     private int yearCreated;
@@ -6,6 +7,7 @@ public class Movie {
     private int lengthInMinutes;
     private String genre;
 
+    // Constructor til at initialisere alle felterne ved oprettelse af et Movie-objekt
     public Movie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
@@ -15,22 +17,24 @@ public class Movie {
         this.genre = genre;
     }
 
+    // Getter-metoder til at hente værdierne af felterne
     public String getTitle(){
-        return title;
+        return title;  // Returnerer filmens titel
     }
 
     public String getDirector(){
-        return director;
+        return director;  // Returnerer instruktørens navn
     }
 
     public int getYearCreated(){
-        return yearCreated;
+        return yearCreated;  // Returnerer udgivelsesåret for filmen
     }
 
     public boolean isInColor(){
-        return isInColor;
+        return isInColor;  // Returnerer om filmen er i farve eller ej
     }
 
+    // Konverterer isInColor-booleanen til en tekststreng ("Yes" eller "No")
     public String editColor(boolean isInColor){
         String isInColorString = null;
         if (isInColor){
@@ -42,40 +46,45 @@ public class Movie {
     }
 
     public int getLengthInMinutes(){
-        return lengthInMinutes;
+        return lengthInMinutes;  // Returnerer filmens længde i minutter
     }
 
     public String getGenre(){
-        return genre;
+        return genre;  // Returnerer filmens genre
     }
 
+    // Setter-metoder til at ændre værdierne af felterne
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title;  // Ændrer filmens titel
     }
 
     public void setDirector(String director){
-        this.director = director;
+        this.director = director;  // Ændrer instruktørens navn
     }
 
     public void setYearCreated(int yearCreated){
-        this.yearCreated = yearCreated;
+        this.yearCreated = yearCreated;  // Ændrer udgivelsesåret for filmen
     }
 
     public void setGenre(String genre){
-        this.genre = genre;
+        this.genre = genre;  // Ændrer filmens genre
     }
-
 
     public void setIsInColor(boolean isInColor){
-        this.isInColor = isInColor;
+        this.isInColor = isInColor;  // Ændrer om filmen er i farve eller ej
     }
-
 
     public void setLengthInMinutes(int lengthInMinutes){
-        this.lengthInMinutes = lengthInMinutes;
+        this.lengthInMinutes = lengthInMinutes;  // Ændrer filmens længde i minutter
     }
 
+    // Returnerer en tekstbeskrivelse af filmen, som kan bruges til at vise filmens detaljer
     public String toString(){
-        return "Movie title: " + title + " \nDirector: " + director + " \nYear created: " + yearCreated + " \nIs in color: " + editColor(isInColor) + "\nLength in minutes: " + lengthInMinutes + "\nGenre: " + genre + "\n\n";
+        return "Movie title: " + title +
+                " \nDirector: " + director +
+                " \nYear created: " + yearCreated +
+                " \nIs in color: " + editColor(isInColor) +
+                "\nLength in minutes: " + lengthInMinutes +
+                "\nGenre: " + genre + "\n\n";
     }
 }
